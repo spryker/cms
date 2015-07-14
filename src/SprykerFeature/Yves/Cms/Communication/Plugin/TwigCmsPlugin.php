@@ -4,10 +4,10 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerFeature\Yves\Cms\Plugin;
+namespace SprykerFeature\Yves\Cms\Communication\Plugin;
 
 use Silex\Application;
-use SprykerEngine\Yves\Kernel\AbstractPlugin;
+use SprykerEngine\Yves\Kernel\Communication\AbstractPlugin;
 use SprykerFeature\Yves\Twig\Dependency\Plugin\TwigFunctionPluginInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
