@@ -2,10 +2,10 @@
 
 namespace SprykerFeature\Zed\Cms\Persistence\Propel;
 
-use SprykerFeature\Zed\Cms\Persistence\Propel\Base\SpyCmsBlockQuery as BaseSpyCmsBlockQuery;
+use Orm\Zed\Cms\Persistence\Base\SpyCmsBlock as BaseSpyCmsBlock;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_cms_block' table.
+ * Skeleton subclass for representing a row from the 'spy_cms_block' table.
  *
  *
  *
@@ -14,7 +14,7 @@ use SprykerFeature\Zed\Cms\Persistence\Propel\Base\SpyCmsBlockQuery as BaseSpyCm
  * long as it does not already exist in the output directory.
  *
  */
-class SpyCmsBlockQuery extends BaseSpyCmsBlockQuery
+abstract class AbstractSpyCmsBlock extends BaseSpyCmsBlock
 {
 
 }

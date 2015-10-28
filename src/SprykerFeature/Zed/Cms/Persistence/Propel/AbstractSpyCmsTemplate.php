@@ -6,10 +6,10 @@
 
 namespace SprykerFeature\Zed\Cms\Persistence\Propel;
 
-use SprykerFeature\Zed\Cms\Persistence\Propel\Base\SpyCmsTemplateQuery as BaseSpyCmsTemplateQuery;
+use Orm\Zed\Cms\Persistence\Base\SpyCmsTemplate as BaseSpyCmsTemplate;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_cms_template' table.
+ * Skeleton subclass for representing a row from the 'spy_cms_template' table.
  *
  *
  *
@@ -17,8 +17,7 @@ use SprykerFeature\Zed\Cms\Persistence\Propel\Base\SpyCmsTemplateQuery as BaseSp
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCmsTemplateQuery extends BaseSpyCmsTemplateQuery
+abstract class AbstractSpyCmsTemplate extends BaseSpyCmsTemplate
 {
 
-} // SpyCmsTemplateQuery
-
+}

@@ -6,7 +6,7 @@
 
 namespace SprykerFeature\Zed\Cms\Persistence\Propel;
 
-use SprykerFeature\Zed\Cms\Persistence\Propel\Base\SpyCmsPage as BaseSpyCmsPage;
+use Orm\Zed\Cms\Persistence\Base\SpyCmsPage as BaseSpyCmsPage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_cms_page' table.
@@ -17,7 +17,7 @@ use SprykerFeature\Zed\Cms\Persistence\Propel\Base\SpyCmsPage as BaseSpyCmsPage;
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCmsPage extends BaseSpyCmsPage
+abstract class AbstractSpyCmsPage extends BaseSpyCmsPage
 {
 
 }

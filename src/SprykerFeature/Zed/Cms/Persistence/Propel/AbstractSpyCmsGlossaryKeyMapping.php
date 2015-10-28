@@ -6,10 +6,10 @@
 
 namespace SprykerFeature\Zed\Cms\Persistence\Propel;
 
-use SprykerFeature\Zed\Cms\Persistence\Propel\Base\SpyCmsPageQuery as BaseSpyCmsPageQuery;
+use Orm\Zed\Cms\Persistence\Base\SpyCmsGlossaryKeyMapping as BaseSpyCmsGlossaryKeyMapping;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_cms_page' table.
+ * Skeleton subclass for representing a row from the 'spy_cms_glossary_key_mapping' table.
  *
  *
  *
@@ -17,8 +17,7 @@ use SprykerFeature\Zed\Cms\Persistence\Propel\Base\SpyCmsPageQuery as BaseSpyCms
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCmsPageQuery extends BaseSpyCmsPageQuery
+abstract class AbstractSpyCmsGlossaryKeyMapping extends BaseSpyCmsGlossaryKeyMapping
 {
 
-} // SpyCmsPageQuery
-
+}
