@@ -4,7 +4,7 @@
  * (c) Spryker Systems GmbH copyright protected.
  */
 
-namespace SprykerFeature\Client\Cms\Service\KeyBuilder;
+namespace SprykerFeature\Client\Cms\KeyBuilder;
 
 use SprykerFeature\Shared\Cms\CmsConstants;
 use SprykerFeature\Shared\Collector\Code\KeyBuilder\SharedResourceKeyBuilder;

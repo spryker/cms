@@ -4,10 +4,10 @@
  * (c) Spryker Systems GmbH copyright protected.
  */
 
-namespace SprykerFeature\Client\Cms\Service\Storage;
+namespace SprykerFeature\Client\Cms\Storage;
 
 use Generated\Shared\Transfer\CmsBlockTransfer;
-use SprykerFeature\Client\Storage\Service\StorageClientInterface;
+use SprykerFeature\Client\Storage\StorageClientInterface;
 
 class CmsBlockStorage implements CmsBlockStorageInterface
 {
