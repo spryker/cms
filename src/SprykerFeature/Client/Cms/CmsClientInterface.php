@@ -4,11 +4,11 @@
  * (c) Spryker Systems GmbH copyright protected.
  */
 
-namespace SprykerFeature\Client\Cms\Service\Storage;
+namespace SprykerFeature\Client\Cms;
 
 use Generated\Shared\Transfer\CmsBlockTransfer;
 
-interface CmsBlockStorageInterface
+interface CmsClientInterface
 {
 
     /**
@@ -16,6 +16,6 @@ interface CmsBlockStorageInterface
      *
      * @return array
      */
-    public function getBlockByName(CmsBlockTransfer $cmsBlockTransfer);
+    public function findBlockByName(CmsBlockTransfer $cmsBlockTransfer);
 
 }

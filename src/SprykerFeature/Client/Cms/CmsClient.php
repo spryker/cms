@@ -4,10 +4,10 @@
  * (c) Spryker Systems GmbH copyright protected.
  */
 
-namespace SprykerFeature\Client\Cms\Service;
+namespace SprykerFeature\Client\Cms;
 
 use Generated\Shared\Transfer\CmsBlockTransfer;
-use SprykerEngine\Client\Kernel\Service\AbstractClient;
+use SprykerEngine\Client\Kernel\AbstractClient;
 
 class CmsClient extends AbstractClient implements CmsClientInterface
 {

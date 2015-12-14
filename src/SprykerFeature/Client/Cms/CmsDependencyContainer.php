@@ -4,17 +4,17 @@
  * (c) Spryker Systems GmbH copyright protected.
  */
 
-namespace SprykerFeature\Client\Cms\Service;
+namespace SprykerFeature\Client\Cms;
 
-use SprykerFeature\Client\Cms\Service\KeyBuilder\CmsBlockKeyBuilder;
-use SprykerFeature\Client\Cms\Service\Storage\CmsBlockStorage;
-use SprykerEngine\Client\Kernel\Service\AbstractServiceDependencyContainer;
+use SprykerFeature\Client\Cms\KeyBuilder\CmsBlockKeyBuilder;
+use SprykerFeature\Client\Cms\Storage\CmsBlockStorage;
+use SprykerEngine\Client\Kernel\AbstractDependencyContainer;
 use SprykerFeature\Client\Cms\CmsDependencyProvider;
-use SprykerFeature\Client\Cms\Service\Storage\CmsBlockStorageInterface;
-use SprykerFeature\Client\Storage\Service\StorageClientInterface;
+use SprykerFeature\Client\Cms\Storage\CmsBlockStorageInterface;
+use SprykerFeature\Client\Storage\StorageClientInterface;
 use SprykerFeature\Shared\FrontendExporter\Code\KeyBuilder\KeyBuilderInterface;
 
-class CmsDependencyContainer extends AbstractServiceDependencyContainer
+class CmsDependencyContainer extends AbstractDependencyContainer
 {
 
     /**
