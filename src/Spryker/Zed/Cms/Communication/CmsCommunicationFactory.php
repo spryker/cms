@@ -25,7 +25,7 @@ use Spryker\Zed\Cms\Persistence\CmsQueryContainer;
  * @method CmsQueryContainer getQueryContainer()
  * @method CmsConfig getConfig()
  */
-class CmsDependencyContainer extends AbstractCommunicationFactory
+class CmsCommunicationFactory extends AbstractCommunicationFactory
 {
 
     /**

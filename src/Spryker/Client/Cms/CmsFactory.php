@@ -14,7 +14,7 @@ use Spryker\Client\Cms\Storage\CmsBlockStorageInterface;
 use Spryker\Client\Storage\StorageClientInterface;
 use Spryker\Shared\FrontendExporter\Code\KeyBuilder\KeyBuilderInterface;
 
-class CmsDependencyContainer extends AbstractFactory
+class CmsFactory extends AbstractFactory
 {
 
     /**

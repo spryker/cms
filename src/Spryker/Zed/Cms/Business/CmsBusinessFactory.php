@@ -22,7 +22,7 @@ use Spryker\Zed\Cms\Dependency\Facade\CmsToUrlInterface;
 use Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface;
 use Symfony\Component\Finder\Finder;
 
-class CmsDependencyContainer extends AbstractBusinessFactory
+class CmsBusinessFactory extends AbstractBusinessFactory
 {
 
     /**
