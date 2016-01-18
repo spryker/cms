@@ -1,6 +1,6 @@
 /**
  * 
- * CMS bundle main module
+ * CMS main module
  * @copyright: Spryker Systems GmbH
  *
  */
@@ -9,5 +9,5 @@
 
 require('ZedGui');
 require('./logic');
-require('../sass/main.scss');
-require('../img/cms-loader.gif');
+require('../../sass/main.scss');
+require('../../img/cms-loader.gif');

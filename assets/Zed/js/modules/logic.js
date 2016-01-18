@@ -1,6 +1,6 @@
 /**
  * 
- * CMS bundle logic
+ * CMS logic
  * @copyright: Spryker Systems GmbH
  *
  */
