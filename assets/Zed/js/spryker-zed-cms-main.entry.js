@@ -1,6 +1,6 @@
 /**
  * 
- * CMS bundle main entry point
+ * CMS main entry point
  * @copyright: Spryker Systems GmbH
  *
  */
