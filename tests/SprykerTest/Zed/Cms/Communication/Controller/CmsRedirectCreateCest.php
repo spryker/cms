@@ -5,9 +5,9 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\Cms\Presentation;
+namespace SprykerTest\Zed\Cms\Communication\Controller;
 
-use SprykerTest\Zed\Cms\CmsPresentationTester;
+use SprykerTest\Zed\Cms\CmsCommunicationTester;
 use SprykerTest\Zed\Cms\PageObject\CmsRedirectCreatePage;
 
 /**
@@ -15,7 +15,8 @@ use SprykerTest\Zed\Cms\PageObject\CmsRedirectCreatePage;
  * @group SprykerTest
  * @group Zed
  * @group Cms
- * @group Presentation
+ * @group Communication
+ * @group Controller
  * @group CmsRedirectCreateCest
  * Add your own group annotations below this line
  */
@@ -23,11 +24,11 @@ class CmsRedirectCreateCest
 {
 
     /**
-     * @param \SprykerTest\Zed\Cms\CmsPresentationTester $i
+     * @param \SprykerTest\Zed\Cms\CmsCommunicationTester $i
      *
      * @return void
      */
-    public function breadcrumbIsVisible(CmsPresentationTester $i)
+    public function breadcrumbIsVisible(CmsCommunicationTester $i)
     {
         $i->amOnPage(CmsRedirectCreatePage::URL);
         $i->seeBreadcrumbNavigation('Dashboard / Content Management / Redirects / Create new CMS Redirect');
