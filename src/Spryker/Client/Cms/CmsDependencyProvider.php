@@ -14,6 +14,7 @@ class CmsDependencyProvider extends AbstractDependencyProvider
 {
 
     const KV_STORAGE = 'kv storage';
+    const SERVICE_ZED = 'SERVICE_ZED';
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
@@ -22,8 +23,12 @@ class CmsDependencyProvider extends AbstractDependencyProvider
      */
     public function provideServiceLayerDependencies(Container $container)
     {
-        $container[self::KV_STORAGE] = function (Container $container) {
+        $container[static::KV_STORAGE] = function (Container $container) {
             return $container->getLocator()->storage()->client();
+        };
+
+        $container[static::SERVICE_ZED] = function (Container $container) {
+            return $container->getLocator()->zedRequest()->client();
         };
 
         return $container;
