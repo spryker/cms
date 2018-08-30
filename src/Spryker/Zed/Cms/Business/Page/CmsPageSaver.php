@@ -157,6 +157,8 @@ class CmsPageSaver implements CmsPageSaverInterface
 
             $cmsPageLocalizedAttributesList = $this->createCmsPageLocalizedAttributesList($cmsPageEntity);
             $this->updateCmsPageLocalizedAttributes($cmsPageTransfer, $cmsPageLocalizedAttributesList, $cmsPageEntity);
+            $cmsPageLocalizedAttributesList
+                = $this->createNewCmsPageLocalizedAttributes($cmsPageTransfer, $cmsPageLocalizedAttributesList, $cmsPageEntity);
             $this->updateCmsPageLocalizedMetaAttributes($cmsPageTransfer, $cmsPageLocalizedAttributesList);
 
             if ($cmsPageEntity->getIsActive()) {
@@ -348,7 +350,9 @@ class CmsPageSaver implements CmsPageSaverInterface
         $cmsPageUrlList = $this->createCmsPageList($cmsPageEntity);
 
         foreach ($cmsPageTransfer->getPageAttributes() as $cmsPageAttributesTransfer) {
-
+            if (!$cmsPageAttributesTransfer->getIdCmsPageLocalizedAttributes()) {
+                continue;
+            }
             $cmsPageLocalizedAttributesEntity = $cmsPageLocalizedAttributesList[$cmsPageAttributesTransfer->getIdCmsPageLocalizedAttributes()];
             $urlEntity = $cmsPageUrlList[$cmsPageAttributesTransfer->getFkLocale()];
 
@@ -356,6 +360,48 @@ class CmsPageSaver implements CmsPageSaverInterface
             $this->updatePageUrl($cmsPageAttributesTransfer, $urlEntity);
 
             $cmsPageLocalizedAttributesEntity->save();
+        }
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
+     * @param \Generated\Shared\Transfer\CmsPageLocalizedAttributesTransfer[] $cmsPageLocalizedAttributesList
+     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
+     *
+     * @return \Generated\Shared\Transfer\CmsPageLocalizedAttributesTransfer[]
+     */
+    protected function createNewCmsPageLocalizedAttributes(
+        CmsPageTransfer $cmsPageTransfer,
+        array $cmsPageLocalizedAttributesList,
+        SpyCmsPage $cmsPageEntity
+    ) {
+        foreach ($cmsPageTransfer->getPageAttributes() as $cmsPageAttributesTransfer) {
+            if (!$cmsPageAttributesTransfer->getIdCmsPageLocalizedAttributes()) {
+                $cmsPageLocalizedAttributesEntity = $this->createLocalizedAttributes($cmsPageAttributesTransfer, $cmsPageEntity);
+                $cmsPageLocalizedAttributesList[$cmsPageLocalizedAttributesEntity->getIdCmsPageLocalizedAttributes()]
+                    = $cmsPageLocalizedAttributesEntity;
+                $this->updateMetaAttributeWithLocalizedAttributes($cmsPageTransfer, $cmsPageLocalizedAttributesEntity);
+            }
+        }
+        return $cmsPageLocalizedAttributesList;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
+     * @param \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity
+     *
+     * @return void
+     */
+    protected function updateMetaAttributeWithLocalizedAttributes(
+        CmsPageTransfer $cmsPageTransfer,
+        SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity
+    ) {
+        foreach ($cmsPageTransfer->getMetaAttributes() as $cmsPageMetaAttributesTransfer) {
+            if ($cmsPageMetaAttributesTransfer->getFkLocale() === $cmsPageLocalizedAttributesEntity->getFkLocale()) {
+                $cmsPageMetaAttributesTransfer->setIdCmsPageLocalizedAttributes(
+                    $cmsPageLocalizedAttributesEntity->getIdCmsPageLocalizedAttributes()
+                );
+            }
         }
     }
 

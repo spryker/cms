@@ -264,6 +264,13 @@ interface CmsQueryContainerInterface extends QueryContainerInterface
     /**
      * @api
      *
+     * @return \Orm\Zed\Cms\Persistence\SpyCmsPageQuery
+     */
+    public function queryLocalizedPagesWithTemplates();
+
+    /**
+     * @api
+     *
      * @param string $value
      *
      * @return \Orm\Zed\Glossary\Persistence\SpyGlossaryTranslationQuery
