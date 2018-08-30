@@ -209,7 +209,7 @@ class CmsQueryContainer extends AbstractQueryContainer implements CmsQueryContai
      *
      * @return \Orm\Zed\Cms\Persistence\SpyCmsPageQuery
      */
-    public function queryLocalizedPagesWithTemplates(): SpyCmsPageQuery
+    public function queryLocalizedPagesWithTemplates()
     {
         return $this->queryPages()
             ->leftJoinSpyCmsPageLocalizedAttributes()
