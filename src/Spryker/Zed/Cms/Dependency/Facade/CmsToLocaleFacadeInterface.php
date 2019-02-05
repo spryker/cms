@@ -7,7 +7,7 @@
 
 namespace Spryker\Zed\Cms\Dependency\Facade;
 
-interface CmsToLocaleInterface
+interface CmsToLocaleFacadeInterface
 {
     /**
      * @return \Generated\Shared\Transfer\LocaleTransfer
