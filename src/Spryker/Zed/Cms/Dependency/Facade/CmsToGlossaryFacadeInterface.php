@@ -10,7 +10,7 @@ namespace Spryker\Zed\Cms\Dependency\Facade;
 use Generated\Shared\Transfer\KeyTranslationTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 
-interface CmsToGlossaryInterface
+interface CmsToGlossaryFacadeInterface
 {
     /**
      * @param int $idKey
