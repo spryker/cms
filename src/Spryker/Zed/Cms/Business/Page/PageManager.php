@@ -389,7 +389,7 @@ class PageManager implements PageManagerInterface
     {
         foreach ($cmsPageLocalizedAttributesTransfers as $localizedAttributesTransfer) {
             $cmsPageLocalizedAttributesEntity = $this->getLocalizedAttributesForPage($pageEntity, $localizedAttributesTransfer);
-            $cmsPageLocalizedAttributesEntity->fromArray(array_filter($localizedAttributesTransfer->modifiedToArray()));
+            $cmsPageLocalizedAttributesEntity->fromArray($localizedAttributesTransfer->modifiedToArray());
             $cmsPageLocalizedAttributesEntity->save();
 
             $localizedAttributesTransfer->fromArray($cmsPageLocalizedAttributesEntity->toArray(), true);
