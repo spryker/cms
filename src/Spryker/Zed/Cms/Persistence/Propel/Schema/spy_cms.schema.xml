@@ -99,7 +99,7 @@
             <unique-column name="fk_store"/>
         </unique>
 
-        <foreign-key name="spy_cms_page_store-fk_cms_page" foreignTable="spy_cms_page">
+        <foreign-key name="spy_cms_page_store-fk_cms_page" foreignTable="spy_cms_page" onDelete="CASCADE">
             <reference local="fk_cms_page" foreign="id_cms_page"/>
         </foreign-key>
         <foreign-key name="spy_cms_page_store-fk_store" foreignTable="spy_store">
