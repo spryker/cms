@@ -152,15 +152,32 @@ class CmsConfig extends AbstractBundleConfig
     protected function getAbsolutePath(string $templateRelativePath, string $twigLayer, string $themeName = self::THEME_NAME_DEFAULT): string
     {
         $templateRelativePath = str_replace(static::CMS_TWIG_TEMPLATE_PREFIX, '', $templateRelativePath);
+        $cmsPathCandidates = [
+            sprintf(
+                '%s/%s/Cms/src/%s/%s/Cms/Theme/%s%s',
+                APPLICATION_SOURCE_DIR,
+                $this->get(CmsConstants::PROJECT_NAMESPACE),
+                $this->get(CmsConstants::PROJECT_NAMESPACE),
+                $twigLayer,
+                $themeName,
+                $templateRelativePath,
+            ),
+            sprintf(
+                '%s/%s/%s/Cms/Theme/%s%s',
+                APPLICATION_SOURCE_DIR,
+                $this->get(CmsConstants::PROJECT_NAMESPACE),
+                $twigLayer,
+                $themeName,
+                $templateRelativePath,
+            ),
+        ];
+        foreach ($cmsPathCandidates as $cmsPathCandidate) {
+            if (file_exists($cmsPathCandidate)) {
+                return $cmsPathCandidate;
+            }
+        }
 
-        return sprintf(
-            '%s/%s/%s/Cms/Theme/%s%s',
-            APPLICATION_SOURCE_DIR,
-            $this->get(CmsConstants::PROJECT_NAMESPACE),
-            $twigLayer,
-            $themeName,
-            $templateRelativePath,
-        );
+        return reset($cmsPathCandidates);
     }
 
     /**
