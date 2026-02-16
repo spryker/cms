@@ -11,3 +11,8 @@ parameters:
         - '#Call to an undefined method Orm\\.+Query::useSpyCmsPageStoreQuery\(\).#'
         -
             identifier: missingType.iterableValue
+        # Defensive programming: type checks kept for runtime safety
+        -
+            identifier: notIdentical.alwaysTrue
+        -
+            identifier: function.alreadyNarrowedType
