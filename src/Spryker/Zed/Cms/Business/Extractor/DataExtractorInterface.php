@@ -13,18 +13,7 @@ use Generated\Shared\Transfer\LocaleTransfer;
 
 interface DataExtractorInterface
 {
-    /**
-     * @param string $data
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionDataTransfer
-     */
     public function extractCmsVersionDataTransfer(string $data): CmsVersionDataTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $cmsVersionDataTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return \Generated\Shared\Transfer\LocaleCmsPageDataTransfer
-     */
     public function extractLocaleCmsPageDataTransfer(CmsVersionDataTransfer $cmsVersionDataTransfer, LocaleTransfer $localeTransfer): LocaleCmsPageDataTransfer;
 }

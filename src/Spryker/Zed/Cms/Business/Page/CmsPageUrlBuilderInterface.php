@@ -11,17 +11,7 @@ use Generated\Shared\Transfer\CmsPageAttributesTransfer;
 
 interface CmsPageUrlBuilderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributesTransfer
-     *
-     * @return string
-     */
     public function buildPageUrl(CmsPageAttributesTransfer $cmsPageAttributesTransfer): string;
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributesTransfer
-     *
-     * @return string
-     */
     public function getPageUrlPrefix(CmsPageAttributesTransfer $cmsPageAttributesTransfer): string;
 }

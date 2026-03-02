@@ -17,19 +17,11 @@ class CmsStub implements CmsStubInterface
      */
     protected $zedRequestClient;
 
-    /**
-     * @param \Spryker\Client\Cms\Dependency\Client\CmsToZedRequestInterface $zedRequestClient
-     */
     public function __construct(CmsToZedRequestInterface $zedRequestClient)
     {
         $this->zedRequestClient = $zedRequestClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\FlattenedLocaleCmsPageDataRequestTransfer $flattenedLocaleCmsPageDataRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\FlattenedLocaleCmsPageDataRequestTransfer
-     */
     public function getFlattenedLocaleCmsPageData(
         FlattenedLocaleCmsPageDataRequestTransfer $flattenedLocaleCmsPageDataRequestTransfer
     ): FlattenedLocaleCmsPageDataRequestTransfer {

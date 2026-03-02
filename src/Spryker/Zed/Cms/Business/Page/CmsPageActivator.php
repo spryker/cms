@@ -64,11 +64,6 @@ class CmsPageActivator implements CmsPageActivatorInterface
         $this->templateReader = $templateReader;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return void
-     */
     public function activate(int $idCmsPage): void
     {
         $cmsPageEntity = $this->getCmsPageEntity($idCmsPage);
@@ -106,11 +101,6 @@ class CmsPageActivator implements CmsPageActivatorInterface
         return true;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return void
-     */
     public function deactivate(int $idCmsPage): void
     {
         $cmsPageEntity = $this->getCmsPageEntity($idCmsPage);
@@ -171,11 +161,6 @@ class CmsPageActivator implements CmsPageActivatorInterface
         return $cmsPageEntity;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPage
-     */
     protected function getCmsPageEntityWithTemplatesAndUrl(int $idCmsPage): SpyCmsPage
     {
         return $this->cmsQueryContainer
@@ -183,11 +168,6 @@ class CmsPageActivator implements CmsPageActivatorInterface
             ->findOne();
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return \Generated\Shared\Transfer\CmsPageTransfer
-     */
     protected function generateCmsPageTransferFromEntity(SpyCmsPage $cmsPageEntity): CmsPageTransfer
     {
         $cmsPageTransfer = (new CmsPageTransfer())->fromArray($cmsPageEntity->toArray(), true);
@@ -196,21 +176,11 @@ class CmsPageActivator implements CmsPageActivatorInterface
         return $cmsPageTransfer;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return int
-     */
     protected function countNumberOfGlossaryKeysForIdCmsPage(int $idCmsPage): int
     {
         return $this->cmsQueryContainer->queryGlossaryKeyMappingsByPageId($idCmsPage)->count();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
-     *
-     * @return void
-     */
     protected function runPostActivatorPlugins(CmsPageTransfer $cmsPageTransfer): void
     {
         foreach ($this->postCmsPageActivatorPlugins as $postCmsPageActivatorPlugin) {

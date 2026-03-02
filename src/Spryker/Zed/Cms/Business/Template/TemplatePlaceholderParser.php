@@ -16,9 +16,6 @@ class TemplatePlaceholderParser implements TemplatePlaceholderParserInterface
      */
     protected $cmsConfig;
 
-    /**
-     * @param \Spryker\Zed\Cms\CmsConfig $cmsConfig
-     */
     public function __construct(CmsConfig $cmsConfig)
     {
         $this->cmsConfig = $cmsConfig;

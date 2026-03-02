@@ -62,11 +62,6 @@ class CmsRedirectForm extends AbstractType
      */
     protected const MAX_COUNT_CHARACTERS_REDIRECT_URL = 255;
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -174,9 +169,6 @@ class CmsRedirectForm extends AbstractType
         return $this;
     }
 
-    /**
-     * @return array
-     */
     protected function getUrlConstraints(): array
     {
         $urlConstraints = $this->getMandatoryConstraints();
@@ -196,9 +188,6 @@ class CmsRedirectForm extends AbstractType
         return $urlConstraints;
     }
 
-    /**
-     * @return array
-     */
     protected function getMandatoryConstraints(): array
     {
         return [
@@ -220,9 +209,6 @@ class CmsRedirectForm extends AbstractType
         ];
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraints\NotBlank
-     */
     protected function createNotBlankConstraint(): NotBlank
     {
         return new NotBlank();
@@ -262,9 +248,6 @@ class CmsRedirectForm extends AbstractType
         }
     }
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return 'cms_redirect';

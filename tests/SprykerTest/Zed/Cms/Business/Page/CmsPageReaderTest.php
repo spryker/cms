@@ -32,9 +32,6 @@ use SprykerTest\Zed\Cms\Business\CmsMocks;
  */
 class CmsPageReaderTest extends CmsMocks
 {
-    /**
-     * @return void
-     */
     public function testGetCmsPageByIdShouldReturnMappedTransferObjectFromPersistence(): void
     {
         $cmsPageReaderMock = $this->createCmsPageReaderMock();
@@ -51,9 +48,6 @@ class CmsPageReaderTest extends CmsMocks
         $this->assertCount(2, $cmsPageTransfer->getPageAttributes());
     }
 
-    /**
-     * @return void
-     */
     public function testGetCmsPageByIdWhenPageNotFoundShouldReturnNull(): void
     {
         $cmsPageReaderMock = $this->createCmsPageReaderMock();

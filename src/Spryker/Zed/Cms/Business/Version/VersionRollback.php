@@ -37,12 +37,6 @@ class VersionRollback implements VersionRollbackInterface
      */
     protected $queryContainer;
 
-    /**
-     * @param \Spryker\Zed\Cms\Business\Version\VersionPublisherInterface $versionPublisher
-     * @param \Spryker\Zed\Cms\Business\Version\VersionGeneratorInterface $versionGenerator
-     * @param \Spryker\Zed\Cms\Business\Version\VersionMigrationInterface $versionMigration
-     * @param \Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface $queryContainer
-     */
     public function __construct(
         VersionPublisherInterface $versionPublisher,
         VersionGeneratorInterface $versionGenerator,
@@ -81,14 +75,6 @@ class VersionRollback implements VersionRollbackInterface
         return $this->migrateVersions($originVersionEntity, $targetVersionEntity, $idCmsPage, $version);
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsVersion $originVersionEntity
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsVersion $targetVersionEntity
-     * @param int $idCmsPage
-     * @param int $version
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer
-     */
     protected function migrateVersions(SpyCmsVersion $originVersionEntity, SpyCmsVersion $targetVersionEntity, int $idCmsPage, int $version): CmsVersionTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(function () use ($originVersionEntity, $targetVersionEntity, $idCmsPage, $version) {
@@ -96,14 +82,6 @@ class VersionRollback implements VersionRollbackInterface
         });
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsVersion $originVersionEntity
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsVersion $targetVersionEntity
-     * @param int $idCmsPage
-     * @param int $version
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer
-     */
     public function executeMigrateVersion(
         SpyCmsVersion $originVersionEntity,
         SpyCmsVersion $targetVersionEntity,

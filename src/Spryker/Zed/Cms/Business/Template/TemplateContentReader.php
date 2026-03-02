@@ -24,10 +24,6 @@ class TemplateContentReader implements TemplateContentReaderInterface
      */
     protected $finder;
 
-    /**
-     * @param \Spryker\Zed\Cms\CmsConfig $cmsConfig
-     * @param \Symfony\Component\Finder\Finder $finder
-     */
     public function __construct(CmsConfig $cmsConfig, Finder $finder)
     {
         $this->cmsConfig = $cmsConfig;

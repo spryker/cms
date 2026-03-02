@@ -11,17 +11,7 @@ use Generated\Shared\Transfer\CmsGlossaryTransfer;
 
 interface CmsGlossarySaverInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CmsGlossaryTransfer $cmsGlossaryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CmsGlossaryTransfer
-     */
     public function saveCmsGlossary(CmsGlossaryTransfer $cmsGlossaryTransfer): CmsGlossaryTransfer;
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return void
-     */
     public function deleteCmsGlossary(int $idCmsPage): void;
 }

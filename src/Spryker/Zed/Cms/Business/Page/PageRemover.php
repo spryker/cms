@@ -81,11 +81,6 @@ class PageRemover implements PageRemoverInterface
         }
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPage|null
-     */
     protected function findCmsPageEntity(int $idCmsPage): ?SpyCmsPage
     {
         $cmsPageEntity = $this
@@ -96,11 +91,6 @@ class PageRemover implements PageRemoverInterface
         return $cmsPageEntity;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return void
-     */
     protected function runCmsPageBeforeDeletePlugins(SpyCmsPage $cmsPageEntity): void
     {
         $cmsPageTransfer = $this->cmsPageMapper->mapCmsPageTransfer($cmsPageEntity);
@@ -110,11 +100,6 @@ class PageRemover implements PageRemoverInterface
         }
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return void
-     */
     protected function deletePageWithRelations(SpyCmsPage $cmsPageEntity): void
     {
         $cmsPageEntity->getSpyUrls()->delete();
@@ -126,11 +111,6 @@ class PageRemover implements PageRemoverInterface
         $cmsPageEntity->delete();
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return void
-     */
     protected function touchDeletedPage(int $idCmsPage): void
     {
         $this->touchFacade->touchDeleted(CmsConstants::RESOURCE_TYPE_PAGE, $idCmsPage);

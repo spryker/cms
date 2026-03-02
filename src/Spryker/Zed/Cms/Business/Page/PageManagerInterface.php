@@ -37,19 +37,8 @@ interface PageManagerInterface
      */
     public function getPageById(int $idPage): SpyCmsPage;
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $pageEntity
-     *
-     * @return \Generated\Shared\Transfer\PageTransfer
-     */
     public function convertPageEntityToTransfer(SpyCmsPage $pageEntity): PageTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PageTransfer $pageTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer|null $localeTransfer
-     *
-     * @return void
-     */
     public function touchPageActive(PageTransfer $pageTransfer, ?LocaleTransfer $localeTransfer = null): void;
 
     /**
@@ -81,10 +70,5 @@ interface PageManagerInterface
      */
     public function createPageUrlWithLocale(PageTransfer $pageTransfer, string $url, LocaleTransfer $localeTransfer): UrlTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PageTransfer $pageTransfer
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     public function savePageUrlAndTouch(PageTransfer $pageTransfer): UrlTransfer;
 }

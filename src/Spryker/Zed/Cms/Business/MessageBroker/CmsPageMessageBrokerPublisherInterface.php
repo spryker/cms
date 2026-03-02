@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\CmsPageMessageBrokerRequestTransfer;
 
 interface CmsPageMessageBrokerPublisherInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageMessageBrokerRequestTransfer $cmsPageMessageBrokerRequestTransfer
-     *
-     * @return void
-     */
     public function sendCmsPagesToMessageBroker(CmsPageMessageBrokerRequestTransfer $cmsPageMessageBrokerRequestTransfer): void;
 }

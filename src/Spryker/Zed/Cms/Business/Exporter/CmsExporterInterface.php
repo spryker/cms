@@ -9,8 +9,5 @@ namespace Spryker\Zed\Cms\Business\Exporter;
 
 interface CmsExporterInterface
 {
-    /**
-     * @return void
-     */
     public function export(): void;
 }

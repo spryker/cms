@@ -17,22 +17,11 @@ class CmsGlossaryFormDataProvider
      */
     protected $cmsQueryContainer;
 
-    /**
-     * @param \Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface $cmsQueryContainer
-     */
     public function __construct(CmsQueryContainerInterface $cmsQueryContainer)
     {
         $this->cmsQueryContainer = $cmsQueryContainer;
     }
 
-    /**
-     * @param int $idPage
-     * @param int|null $idMapping
-     * @param string|null $placeholder
-     * @param int|null $fkLocale
-     *
-     * @return array
-     */
     public function getData(int $idPage, ?int $idMapping = null, ?string $placeholder = null, ?int $fkLocale = null): array
     {
         $formItems = [

@@ -19,11 +19,6 @@ class CmsPageEventExporter implements CmsExporterInterface
 {
     use LoggerTrait;
 
-    /**
-     * @param \Spryker\Zed\Cms\Dependency\Facade\CmsToEventFacadeInterface $eventFacade
-     * @param \Spryker\Zed\Cms\Persistence\CmsRepositoryInterface $cmsRepository
-     * @param \Spryker\Zed\Cms\CmsConfig $cmsConfig
-     */
     public function __construct(
         protected CmsToEventFacadeInterface $eventFacade,
         protected CmsRepositoryInterface $cmsRepository,
@@ -31,9 +26,6 @@ class CmsPageEventExporter implements CmsExporterInterface
     ) {
     }
 
-    /**
-     * @return void
-     */
     public function export(): void
     {
         $activeCmsPageIds = $this->cmsRepository->getActiveSearchablePageIds();

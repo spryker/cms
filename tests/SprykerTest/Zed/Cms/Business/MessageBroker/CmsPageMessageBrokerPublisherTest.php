@@ -65,9 +65,6 @@ class CmsPageMessageBrokerPublisherTest extends Unit
      */
     protected const TEST_FK_PAGE = 789;
 
-    /**
-     * @return void
-     */
     public function testSendCmsPagesToMessageBrokerWithVersionIds(): void
     {
         // Arrange
@@ -167,9 +164,6 @@ class CmsPageMessageBrokerPublisherTest extends Unit
         $publisher->sendCmsPagesToMessageBroker($cmsPageMessageBrokerRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testSendCmsPagesToMessageBrokerHandlesEmptyVersions(): void
     {
         // Arrange
@@ -198,9 +192,6 @@ class CmsPageMessageBrokerPublisherTest extends Unit
         $publisher->sendCmsPagesToMessageBroker($cmsPageMessageBrokerRequestTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testSendCmsPagesToMessageBrokerHandlesNonExistentPage(): void
     {
         // Arrange
@@ -248,12 +239,6 @@ class CmsPageMessageBrokerPublisherTest extends Unit
         ];
     }
 
-    /**
-     * @param bool $isActive
-     * @param bool $isSearchable
-     *
-     * @return \Generated\Shared\Transfer\CmsPageTransfer
-     */
     protected function createCmsPageTransfer(bool $isActive = true, bool $isSearchable = true): CmsPageTransfer
     {
         return (new CmsPageBuilder([
@@ -264,9 +249,6 @@ class CmsPageMessageBrokerPublisherTest extends Unit
         ]))->build();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer
-     */
     protected function createCmsVersionTransfer(): CmsVersionTransfer
     {
         return (new CmsVersionBuilder([
@@ -303,9 +285,6 @@ class CmsPageMessageBrokerPublisherTest extends Unit
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\Cms\CmsConfig
-     */
     protected function createConfigWithTenantIdentifier(): CmsConfig
     {
         $this->tester->mockConfigMethod('getTenantIdentifier', static::TEST_TENANT_IDENTIFIER);

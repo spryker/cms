@@ -37,9 +37,6 @@ class CmsQueryContainerTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testQueryAllCmsVersionReturnCorrectQuery(): void
     {
         $cmsQueryContainer = new CmsQueryContainer();
@@ -76,9 +73,6 @@ class CmsQueryContainerTest extends Unit
         $this->assertCount(2, $result);
     }
 
-    /**
-     * @return void
-     */
     public function testQueryLocalizedPagesWithTemplatesReturnsCorrectData(): void
     {
         //Arrange
@@ -101,9 +95,6 @@ class CmsQueryContainerTest extends Unit
         $this->assertGreaterThanOrEqual(2, count($result));
     }
 
-    /**
-     * @return void
-     */
     public function testQueryPageWithTemplatesAndUrlsReturnsCorrectData(): void
     {
         //Arrange

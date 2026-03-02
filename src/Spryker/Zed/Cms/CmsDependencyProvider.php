@@ -103,11 +103,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $this->addUrlFacade($container);
@@ -117,11 +112,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $this->addTouchFacade($container);
@@ -140,11 +130,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $this->addUrlQueryContainer($container);
@@ -155,11 +140,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addUrlFacade(Container $container): void
     {
         $container->set(static::FACADE_URL, function (Container $container) {
@@ -167,11 +147,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addLocaleFacade(Container $container): void
     {
         $container->set(static::FACADE_LOCALE, function (Container $container) {
@@ -179,11 +154,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addGlossaryFacade(Container $container): void
     {
         $container->set(static::FACADE_GLOSSARY, function (Container $container) {
@@ -191,11 +161,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addTouchFacade(Container $container): void
     {
         $container->set(static::FACADE_TOUCH, function (Container $container) {
@@ -203,11 +168,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addMessageBrokerFacade(Container $container): void
     {
         $container->set(static::FACADE_MESSAGE_BROKER, function (Container $container) {
@@ -215,11 +175,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addUtilEncodingService(Container $container): void
     {
         $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
@@ -227,11 +182,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addCmsVersionPostSavePlugins(Container $container): void
     {
         $container->set(static::PLUGINS_CMS_VERSION_POST_SAVE_PLUGINS, function (Container $container) {
@@ -239,11 +189,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addCmsVersionTransferExpanderPlugins(Container $container): void
     {
         $container->set(static::PLUGINS_CMS_VERSION_TRANSFER_EXPANDER_PLUGINS, function (Container $container) {
@@ -251,11 +196,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addCmsPagePostActivatorPlugins(Container $container): void
     {
         $container->set(static::PLUGINS_CMS_PAGE_POST_ACTIVATOR, function (Container $container) {
@@ -263,11 +203,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addCmsPageBeforeDeletePlugins(Container $container): void
     {
         $container->set(static::PLUGINS_CMS_PAGE_BEFORE_DELETE, function (Container $container) {
@@ -275,11 +210,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addCmsPageDataExpanderPlugins(Container $container): void
     {
         $container->set(static::PLUGINS_CMS_PAGE_DATA_EXPANDER, function (Container $container) {
@@ -331,11 +261,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addLocalePropelQuery(Container $container): void
     {
         $container->set(static::PROPEL_QUERY_LOCALE, $container->factory(function (Container $container) {
@@ -343,11 +268,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         }));
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addCategoryQueryContainer(Container $container): void
     {
         $container->set(static::QUERY_CONTAINER_CATEGORY, function (Container $container) {
@@ -355,11 +275,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addUrlQueryContainer(Container $container): void
     {
         $container->set(static::QUERY_CONTAINER_URL, function (Container $container) {
@@ -367,11 +282,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addGlossaryQueryContainer(Container $container): void
     {
         $container->set(static::QUERY_CONTAINER_GLOSSARY, function (Container $container) {
@@ -379,11 +289,6 @@ class CmsDependencyProvider extends AbstractBundleDependencyProvider
         });
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function addEventFacade(Container $container): void
     {
         $container->set(static::FACADE_EVENT, function (Container $container) {

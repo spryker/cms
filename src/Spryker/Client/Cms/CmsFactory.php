@@ -13,9 +13,6 @@ use Spryker\Client\Kernel\AbstractFactory;
 
 class CmsFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\Cms\Zed\CmsStubInterface
-     */
     public function createCmsStub(): CmsStubInterface
     {
         return new CmsStub($this->getProvidedDependency(CmsDependencyProvider::CLIENT_ZED_REQUEST));

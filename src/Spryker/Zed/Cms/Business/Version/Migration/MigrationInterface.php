@@ -11,12 +11,6 @@ use Generated\Shared\Transfer\CmsVersionDataTransfer;
 
 interface MigrationInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $originVersionDataTransfer
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $targetVersionDataTransfer
-     *
-     * @return void
-     */
     public function migrate(
         CmsVersionDataTransfer $originVersionDataTransfer,
         CmsVersionDataTransfer $targetVersionDataTransfer

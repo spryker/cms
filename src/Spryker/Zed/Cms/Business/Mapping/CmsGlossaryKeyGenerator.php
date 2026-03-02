@@ -31,22 +31,11 @@ class CmsGlossaryKeyGenerator implements CmsGlossaryKeyGeneratorInterface
      */
     protected $glossaryFacade;
 
-    /**
-     * @param \Spryker\Zed\Cms\Dependency\Facade\CmsToGlossaryFacadeInterface $glossaryFacade
-     */
     public function __construct(CmsToGlossaryFacadeInterface $glossaryFacade)
     {
         $this->glossaryFacade = $glossaryFacade;
     }
 
-    /**
-     * @param int $idCmsPage
-     * @param string $templateName
-     * @param string $placeholder
-     * @param bool $autoIncrement
-     *
-     * @return string
-     */
     public function generateGlossaryKeyName(int $idCmsPage, string $templateName, string $placeholder, bool $autoIncrement = true): string
     {
         $keyName = static::GENERATED_GLOSSARY_KEY_PREFIX . '.';

@@ -27,9 +27,6 @@ use SprykerTest\Zed\Cms\Business\CmsMocks;
  */
 class CmsGlossaryReaderTest extends CmsMocks
 {
-    /**
-     * @return void
-     */
     public function testGetPageGlossaryAttributesShouldReadDataFromTemplateAndPersistenceToTransfer(): void
     {
         $localeFacadeMock = $this->createLocaleMock();
@@ -99,9 +96,6 @@ class CmsGlossaryReaderTest extends CmsMocks
             ->getMock();
     }
 
-    /**
-     * @return array
-     */
     protected function createGlossaryMappingCollection(): array
     {
         $glossaryMappingCollection = [];
@@ -134,9 +128,6 @@ class CmsGlossaryReaderTest extends CmsMocks
         return $glossaryMappingCollection;
     }
 
-    /**
-     * @return array
-     */
     protected function getAvailableLocales(): array
     {
         return [

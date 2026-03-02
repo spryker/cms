@@ -47,19 +47,11 @@ class CmsRedirectHelper extends Module
         return $urlRedirectTransfer;
     }
 
-    /**
-     * @return \Spryker\Zed\Url\Persistence\UrlQueryContainerInterface
-     */
     private function getUrlQuery(): UrlQueryContainerInterface
     {
         return $this->getLocator()->url()->queryContainer();
     }
 
-    /**
-     * @param int $idUrl
-     *
-     * @return void
-     */
     private function cleanupUrlRedirect(int $idUrl): void
     {
         $this->debug(sprintf('Deleting URL redirect: %d', $idUrl));

@@ -34,11 +34,6 @@ class TemplateManager implements TemplateManagerInterface
      */
     protected $finder;
 
-    /**
-     * @param \Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface $cmsQueryContainer
-     * @param \Spryker\Zed\Cms\CmsConfig $config
-     * @param \Symfony\Component\Finder\Finder $finder
-     */
     public function __construct(
         CmsQueryContainerInterface $cmsQueryContainer,
         CmsConfig $config,
@@ -49,12 +44,6 @@ class TemplateManager implements TemplateManagerInterface
         $this->finder = $finder;
     }
 
-    /**
-     * @param string $name
-     * @param string $path
-     *
-     * @return \Generated\Shared\Transfer\CmsTemplateTransfer
-     */
     public function createTemplate(string $name, string $path): CmsTemplateTransfer
     {
         $this->checkTemplatePathDoesNotExist($path);
@@ -87,11 +76,6 @@ class TemplateManager implements TemplateManagerInterface
         }
     }
 
-    /**
-     * @param string $path
-     *
-     * @return bool
-     */
     public function hasTemplatePath(string $path): bool
     {
         $templateCount = $this->cmsQueryContainer->queryTemplateByPath($path)->count();
@@ -99,11 +83,6 @@ class TemplateManager implements TemplateManagerInterface
         return $templateCount > 0;
     }
 
-    /**
-     * @param int $id
-     *
-     * @return bool
-     */
     public function hasTemplateId(int $id): bool
     {
         $templateCount = $this->cmsQueryContainer->queryTemplateById($id)->count();
@@ -111,11 +90,6 @@ class TemplateManager implements TemplateManagerInterface
         return $templateCount > 0;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsTemplate $template
-     *
-     * @return \Generated\Shared\Transfer\CmsTemplateTransfer
-     */
     protected function convertTemplateEntityToTransfer(SpyCmsTemplate $template): CmsTemplateTransfer
     {
         $transferTemplate = new CmsTemplateTransfer();
@@ -124,11 +98,6 @@ class TemplateManager implements TemplateManagerInterface
         return $transferTemplate;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsTemplateTransfer $cmsTemplate
-     *
-     * @return \Generated\Shared\Transfer\CmsTemplateTransfer
-     */
     public function saveTemplate(CmsTemplateTransfer $cmsTemplate): CmsTemplateTransfer
     {
         if ($cmsTemplate->getIdCmsTemplate() === null) {
@@ -138,11 +107,6 @@ class TemplateManager implements TemplateManagerInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsTemplateTransfer $cmsTemplate
-     *
-     * @return \Generated\Shared\Transfer\CmsTemplateTransfer
-     */
     protected function createTemplateFromTransfer(CmsTemplateTransfer $cmsTemplate): CmsTemplateTransfer
     {
         $this->checkTemplatePathDoesNotExist($cmsTemplate->getTemplatePath());
@@ -156,11 +120,6 @@ class TemplateManager implements TemplateManagerInterface
         return $cmsTemplate;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsTemplateTransfer $cmsTemplate
-     *
-     * @return \Generated\Shared\Transfer\CmsTemplateTransfer
-     */
     protected function updateTemplateFromTransfer(CmsTemplateTransfer $cmsTemplate): CmsTemplateTransfer
     {
         $templateEntity = $this->getTemplateEntityById($cmsTemplate->getIdCmsTemplate());
@@ -179,11 +138,6 @@ class TemplateManager implements TemplateManagerInterface
         return $cmsTemplate;
     }
 
-    /**
-     * @param int $idTemplate
-     *
-     * @return \Generated\Shared\Transfer\CmsTemplateTransfer
-     */
     public function getTemplateById(int $idTemplate): CmsTemplateTransfer
     {
         $templateEntity = $this->getTemplateEntityById($idTemplate);
@@ -235,11 +189,6 @@ class TemplateManager implements TemplateManagerInterface
         return $templateEntity;
     }
 
-    /**
-     * @param string $cmsTemplateFolderPath
-     *
-     * @return bool
-     */
     public function syncTemplate(string $cmsTemplateFolderPath): bool
     {
         $templateFolders = $this->config->getTemplateRealPaths($cmsTemplateFolderPath);
@@ -272,11 +221,6 @@ class TemplateManager implements TemplateManagerInterface
         }
     }
 
-    /**
-     * @param string $realPath
-     *
-     * @return bool
-     */
     protected function isTemplateFileExists(string $realPath): bool
     {
         $realPaths = $this->config->getTemplateRealPaths($realPath);
@@ -290,12 +234,6 @@ class TemplateManager implements TemplateManagerInterface
         return false;
     }
 
-    /**
-     * @param string $cmsTemplateFolderPath
-     * @param string $folder
-     *
-     * @return bool
-     */
     protected function findTwigFileAndCreateTemplate(string $cmsTemplateFolderPath, string $folder): bool
     {
         $isTemplateCreated = false;
@@ -317,11 +255,6 @@ class TemplateManager implements TemplateManagerInterface
         return $isTemplateCreated;
     }
 
-    /**
-     * @param string $templateFile
-     *
-     * @return bool
-     */
     protected function fileExists(string $templateFile): bool
     {
         return file_exists($templateFile);

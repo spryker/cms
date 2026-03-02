@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\StoreRelationTransfer;
 
 interface CmsPageStoreRelationReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\StoreRelationTransfer $storeRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreRelationTransfer
-     */
     public function getStoreRelation(StoreRelationTransfer $storeRelationTransfer): StoreRelationTransfer;
 }

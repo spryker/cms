@@ -34,19 +34,11 @@ class CmsRedirectTable extends AbstractTable
      */
     protected $urlQuery;
 
-    /**
-     * @param \Orm\Zed\Url\Persistence\SpyUrlQuery $urlQuery
-     */
     public function __construct(SpyUrlQuery $urlQuery)
     {
         $this->urlQuery = $urlQuery;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config->setHeader([
@@ -74,11 +66,6 @@ class CmsRedirectTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $urlCollection = $this->getUrlCollection($config);
@@ -108,11 +95,6 @@ class CmsRedirectTable extends AbstractTable
         return $this->runQuery($this->urlQuery, $config, true);
     }
 
-    /**
-     * @param \Orm\Zed\Url\Persistence\SpyUrl $urlEntity
-     *
-     * @return string
-     */
     protected function buildLinks(SpyUrl $urlEntity): string
     {
         $buttons = [];

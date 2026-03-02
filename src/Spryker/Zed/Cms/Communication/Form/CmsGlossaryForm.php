@@ -95,11 +95,6 @@ class CmsGlossaryForm extends AbstractType
      */
     public const FIELD_FK_LOCALE = 'fk_locale';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -253,9 +248,6 @@ class CmsGlossaryForm extends AbstractType
         return $this;
     }
 
-    /**
-     * @return array
-     */
     protected function getPlaceholderConstants(): array
     {
         $placeholderConstraints = [
@@ -276,9 +268,6 @@ class CmsGlossaryForm extends AbstractType
         return $placeholderConstraints;
     }
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return 'cms_glossary';

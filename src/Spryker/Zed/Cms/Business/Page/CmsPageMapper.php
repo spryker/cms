@@ -27,10 +27,6 @@ class CmsPageMapper implements CmsPageMapperInterface
      */
     protected $cmsPageStoreRelationReader;
 
-    /**
-     * @param \Spryker\Zed\Cms\Business\Page\CmsPageUrlBuilderInterface $cmsPageUrlBuilder
-     * @param \Spryker\Zed\Cms\Business\Page\Store\CmsPageStoreRelationReaderInterface $cmsPageStoreRelationReader
-     */
     public function __construct(
         CmsPageUrlBuilderInterface $cmsPageUrlBuilder,
         CmsPageStoreRelationReaderInterface $cmsPageStoreRelationReader
@@ -56,12 +52,6 @@ class CmsPageMapper implements CmsPageMapperInterface
         return $urlLocaleMap;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity
-     * @param string|null $url
-     *
-     * @return \Generated\Shared\Transfer\CmsPageAttributesTransfer
-     */
     public function mapCmsLocalizedAttributesTransfer(
         SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity,
         ?string $url = null
@@ -79,11 +69,6 @@ class CmsPageMapper implements CmsPageMapperInterface
         return $cmsPageAttributesTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity
-     *
-     * @return \Generated\Shared\Transfer\CmsPageMetaAttributesTransfer
-     */
     public function mapCmsPageMetaAttributes(SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity): CmsPageMetaAttributesTransfer
     {
         $localeEntity = $cmsPageLocalizedAttributesEntity->getLocale();
@@ -94,11 +79,6 @@ class CmsPageMapper implements CmsPageMapperInterface
         return $cmsCmsPageMetaAttributes;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return \Generated\Shared\Transfer\CmsPageTransfer
-     */
     public function mapCmsPageTransfer(SpyCmsPage $cmsPageEntity): CmsPageTransfer
     {
         $cmsPageTransfer = new CmsPageTransfer();

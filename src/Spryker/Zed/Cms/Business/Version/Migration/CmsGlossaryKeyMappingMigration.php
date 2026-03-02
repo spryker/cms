@@ -32,11 +32,6 @@ class CmsGlossaryKeyMappingMigration implements MigrationInterface
      */
     protected $queryContainer;
 
-    /**
-     * @param \Spryker\Zed\Cms\Business\Mapping\CmsGlossarySaverInterface $cmsGlossarySaver
-     * @param \Spryker\Zed\Cms\Dependency\Facade\CmsToLocaleFacadeInterface $localeFacade
-     * @param \Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface $queryContainer
-     */
     public function __construct(
         CmsGlossarySaverInterface $cmsGlossarySaver,
         CmsToLocaleFacadeInterface $localeFacade,
@@ -47,12 +42,6 @@ class CmsGlossaryKeyMappingMigration implements MigrationInterface
         $this->queryContainer = $queryContainer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $originVersionDataTransfer
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $targetVersionDataTransfer
-     *
-     * @return void
-     */
     public function migrate(CmsVersionDataTransfer $originVersionDataTransfer, CmsVersionDataTransfer $targetVersionDataTransfer): void
     {
         $this->getTransactionHandler()->handleTransaction(function () use ($originVersionDataTransfer, $targetVersionDataTransfer) {
@@ -60,12 +49,6 @@ class CmsGlossaryKeyMappingMigration implements MigrationInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $originVersionDataTransfer
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $targetVersionDataTransfer
-     *
-     * @return void
-     */
     protected function executeMigrateTransaction(CmsVersionDataTransfer $originVersionDataTransfer, CmsVersionDataTransfer $targetVersionDataTransfer): void
     {
         $this->cmsGlossarySaver->deleteCmsGlossary($originVersionDataTransfer->getCmsPage()->getFkPage());

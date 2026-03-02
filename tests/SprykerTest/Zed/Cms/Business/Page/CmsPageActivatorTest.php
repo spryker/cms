@@ -27,9 +27,6 @@ use SprykerTest\Zed\Cms\Business\CmsMocks;
  */
 class CmsPageActivatorTest extends CmsMocks
 {
-    /**
-     * @return void
-     */
     public function testActivatePageShouldPersistActiveFlagAndTriggerTouch(): void
     {
         $cmsPageEntityMock = $this->createCmsPageEntityMock();
@@ -51,9 +48,6 @@ class CmsPageActivatorTest extends CmsMocks
         $this->assertTrue($cmsPageEntityMock->getIsActive());
     }
 
-    /**
-     * @return void
-     */
     public function testDeActivatePageShouldPersistInActiveFlagAndTriggerTouch(): void
     {
         $cmsPageEntityMock = $this->createCmsPageEntityMock();

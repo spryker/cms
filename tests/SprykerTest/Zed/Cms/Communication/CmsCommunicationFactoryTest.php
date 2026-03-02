@@ -27,9 +27,6 @@ class CmsCommunicationFactoryTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testGetTemplateRealPathsReturnsOnlyDefaultThemeTemplatePaths(): void
     {
         $templatePaths = $this->getFactory()->getTemplateRealPaths('/foo/bar');
@@ -37,9 +34,6 @@ class CmsCommunicationFactoryTest extends Unit
         $this->assertCount(2, $templatePaths, 'Expected only default template paths.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetTemplateRealPathsReturnsDefaultAndCustomThemeTemplatePaths(): void
     {
         $this->tester->mockConfigMethod('getThemeNames', ['custom', 'default']);
@@ -48,9 +42,6 @@ class CmsCommunicationFactoryTest extends Unit
         $this->assertCount(4, $templatePaths, 'Expected custom and default template paths.');
     }
 
-    /**
-     * @return \Spryker\Zed\Cms\Communication\CmsCommunicationFactory
-     */
     protected function getFactory(): CmsCommunicationFactory
     {
         return $this->tester->getFactory();

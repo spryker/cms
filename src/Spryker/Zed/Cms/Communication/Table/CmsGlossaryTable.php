@@ -73,11 +73,6 @@ class CmsGlossaryTable extends AbstractTable
         $this->searchArray = $searchArray;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config->setHeader([
@@ -165,11 +160,6 @@ class CmsGlossaryTable extends AbstractTable
         return $buttons;
     }
 
-    /**
-     * @param string $placeholder
-     *
-     * @return string
-     */
     protected function buildPlaceholderLinks(string $placeholder): string
     {
         $url = Url::generate('/cms/glossary/add', [

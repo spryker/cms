@@ -69,11 +69,6 @@ class CmsToUrlFacadeBridge implements CmsToUrlFacadeInterface
         $this->urlFacade->deactivateUrl($urlTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return bool
-     */
     public function hasUrlCaseInsensitive(UrlTransfer $urlTransfer): bool
     {
         return $this->urlFacade->hasUrlCaseInsensitive($urlTransfer);

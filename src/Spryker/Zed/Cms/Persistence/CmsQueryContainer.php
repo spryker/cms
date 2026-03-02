@@ -677,9 +677,6 @@ class CmsQueryContainer extends AbstractQueryContainer implements CmsQueryContai
             ->withColumn(SpyUrlTableMap::COL_URL, static::URL);
     }
 
-    /**
-     * @return \Spryker\Zed\Category\Persistence\CategoryQueryContainerInterface
-     */
     protected function getCategoryQueryContainer(): CategoryQueryContainerInterface
     {
         return $this->getProvidedDependency(CmsDependencyProvider::QUERY_CONTAINER_CATEGORY);
@@ -699,17 +696,11 @@ class CmsQueryContainer extends AbstractQueryContainer implements CmsQueryContai
         return $this->getFactory()->getLocalePropelQuery()->filterByIdLocale($idLocale);
     }
 
-    /**
-     * @return \Spryker\Zed\Url\Persistence\UrlQueryContainerInterface
-     */
     protected function getUrlQueryContainer(): UrlQueryContainerInterface
     {
         return $this->getProvidedDependency(CmsDependencyProvider::QUERY_CONTAINER_URL);
     }
 
-    /**
-     * @return \Spryker\Zed\Glossary\Persistence\GlossaryQueryContainerInterface
-     */
     protected function getGlossaryQueryContainer(): GlossaryQueryContainerInterface
     {
         return $this->getProvidedDependency(CmsDependencyProvider::QUERY_CONTAINER_GLOSSARY);

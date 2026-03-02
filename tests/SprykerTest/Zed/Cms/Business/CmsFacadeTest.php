@@ -86,9 +86,6 @@ class CmsFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -342,9 +339,6 @@ class CmsFacadeTest extends Unit
         $this->assertSame('A Placeholder Translation', $translation);
     }
 
-    /**
-     * @return void
-     */
     public function testCreatePageAndTouchForCustomLocale(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ABCDE');
@@ -366,9 +360,6 @@ class CmsFacadeTest extends Unit
         $this->assertTrue($touchCountAfterCreation > $touchCountBeforeCreation);
     }
 
-    /**
-     * @return void
-     */
     public function testCreatePageAndTouchForCurrentLocale(): void
     {
         $template = $this->cmsFacade->createTemplate('APlaceholderTemplate2', 'APlaceholderTemplatePath2');
@@ -389,9 +380,6 @@ class CmsFacadeTest extends Unit
         $this->assertTrue($touchCountAfterCreation > $touchCountBeforeCreation);
     }
 
-    /**
-     * @return void
-     */
     public function testCalculateFlattenedLocaleCmsPageDataAppliesPreConfiguredCmsPageDataExpanderPlugins(): void
     {
         // Assign
@@ -406,9 +394,6 @@ class CmsFacadeTest extends Unit
         $this->cmsFacade->calculateFlattenedLocaleCmsPageData($input, new LocaleTransfer());
     }
 
-    /**
-     * @return void
-     */
     public function testCalculateFlattenedLocaleCmsPageDataRetrievesFlattenedArray(): void
     {
         // Assign
@@ -435,9 +420,6 @@ class CmsFacadeTest extends Unit
         $this->assertEquals($expectedResult, array_keys($actualResult));
     }
 
-    /**
-     * @return void
-     */
     public function testExtractCmsVersionDataTransferReturnsCmsVersionDataTransfer(): void
     {
         // Assign
@@ -451,9 +433,6 @@ class CmsFacadeTest extends Unit
         $this->assertSame($expectedResultClass, get_class($actualResult));
     }
 
-    /**
-     * @return void
-     */
     public function testExtractCmsVersionDataTransferPopulatesCmsVersionDataTransfer(): void
     {
         // Assign
@@ -467,9 +446,6 @@ class CmsFacadeTest extends Unit
         $this->assertSame($expectedResult, $actualResult->getCmsPage()->getTemplateName());
     }
 
-    /**
-     * @return void
-     */
     public function testExtractLocaleCmsPageDataTransferReturnsLocaleCmsPageDataTransfer(): void
     {
         // Assign
@@ -486,9 +462,6 @@ class CmsFacadeTest extends Unit
         $this->assertSame($expectedResultClass, get_class($actualResult));
     }
 
-    /**
-     * @return \Spryker\Zed\Glossary\Business\GlossaryFacadeInterface
-     */
     protected function buildGlossaryFacade(): GlossaryFacadeInterface
     {
         $glossaryFacade = new GlossaryFacade();
@@ -506,9 +479,6 @@ class CmsFacadeTest extends Unit
         return $glossaryFacade;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function getUrlTransfer(): UrlTransfer
     {
         $urlTransfer = new UrlTransfer();

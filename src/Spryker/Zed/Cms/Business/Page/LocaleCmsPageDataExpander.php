@@ -80,23 +80,11 @@ class LocaleCmsPageDataExpander implements LocaleCmsPageDataExpanderInterface
         $this->cmsPageDataExpanderPlugins = $cmsPageDataExpanderPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\LocaleCmsPageDataTransfer $localeCmsPageDataTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return array
-     */
     public function calculateFlattenedLocaleCmsPageData(LocaleCmsPageDataTransfer $localeCmsPageDataTransfer, LocaleTransfer $localeTransfer): array
     {
         return $this->expand($this->flattenLocaleCmsPageDataTransfer($localeCmsPageDataTransfer), $localeTransfer);
     }
 
-    /**
-     * @param array $cmsPageData
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return array
-     */
     protected function expand(array $cmsPageData, LocaleTransfer $localeTransfer): array
     {
         foreach ($this->cmsPageDataExpanderPlugins as $cmsPageDataExpanderPlugin) {
@@ -106,11 +94,6 @@ class LocaleCmsPageDataExpander implements LocaleCmsPageDataExpanderInterface
         return $cmsPageData;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\LocaleCmsPageDataTransfer $localeCmsPageDataTransfer
-     *
-     * @return array
-     */
     protected function flattenLocaleCmsPageDataTransfer(LocaleCmsPageDataTransfer $localeCmsPageDataTransfer): array
     {
         return [

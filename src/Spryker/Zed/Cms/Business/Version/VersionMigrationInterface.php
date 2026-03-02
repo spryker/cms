@@ -9,11 +9,5 @@ namespace Spryker\Zed\Cms\Business\Version;
 
 interface VersionMigrationInterface
 {
-    /**
-     * @param string $cmsVersionOriginData
-     * @param string $cmsVersionTargetData
-     *
-     * @return void
-     */
     public function migrate(string $cmsVersionOriginData, string $cmsVersionTargetData): void;
 }

@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\CmsPageTransfer;
 
 interface CmsPageSaverInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
-     *
-     * @return int
-     */
     public function createPage(CmsPageTransfer $cmsPageTransfer): int;
 
     /**

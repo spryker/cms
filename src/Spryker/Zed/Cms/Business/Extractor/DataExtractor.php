@@ -24,19 +24,11 @@ class DataExtractor implements DataExtractorInterface
      */
     protected $utilEncoding;
 
-    /**
-     * @param \Spryker\Zed\Cms\Dependency\Service\CmsToUtilEncodingInterface $utilEncoding
-     */
     public function __construct(CmsToUtilEncodingInterface $utilEncoding)
     {
         $this->utilEncoding = $utilEncoding;
     }
 
-    /**
-     * @param string $data
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionDataTransfer
-     */
     public function extractCmsVersionDataTransfer(string $data): CmsVersionDataTransfer
     {
         $cmsDataArray = $this->utilEncoding->decodeJson($data, true);
@@ -44,12 +36,6 @@ class DataExtractor implements DataExtractorInterface
         return (new CmsVersionDataTransfer())->fromArray($cmsDataArray);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $cmsVersionDataTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return \Generated\Shared\Transfer\LocaleCmsPageDataTransfer
-     */
     public function extractLocaleCmsPageDataTransfer(CmsVersionDataTransfer $cmsVersionDataTransfer, LocaleTransfer $localeTransfer): LocaleCmsPageDataTransfer
     {
         $cmsMetaAttributeTransfer = $this->extractMetaAttributeByLocales($cmsVersionDataTransfer->getCmsPage(), $localeTransfer->getLocaleName());
@@ -67,12 +53,6 @@ class DataExtractor implements DataExtractorInterface
         return $localeCmsPageDataTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsGlossaryTransfer $cmsGlossaryTransfer
-     * @param string|null $localeName
-     *
-     * @return array
-     */
     protected function extractPlaceholdersByLocale(CmsGlossaryTransfer $cmsGlossaryTransfer, ?string $localeName): array
     {
         $placeholders = [];
@@ -85,12 +65,6 @@ class DataExtractor implements DataExtractorInterface
         return $placeholders;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
-     * @param string|null $localeName
-     *
-     * @return \Generated\Shared\Transfer\CmsPageAttributesTransfer
-     */
     protected function extractPageAttributeByLocale(CmsPageTransfer $cmsPageTransfer, ?string $localeName): CmsPageAttributesTransfer
     {
         foreach ($cmsPageTransfer->getPageAttributes() as $pageAttribute) {
@@ -102,12 +76,6 @@ class DataExtractor implements DataExtractorInterface
         return new CmsPageAttributesTransfer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
-     * @param string|null $localeName
-     *
-     * @return \Generated\Shared\Transfer\CmsPageMetaAttributesTransfer
-     */
     protected function extractMetaAttributeByLocales(CmsPageTransfer $cmsPageTransfer, ?string $localeName): CmsPageMetaAttributesTransfer
     {
         foreach ($cmsPageTransfer->getMetaAttributes() as $metaAttribute) {

@@ -17,19 +17,11 @@ class CmsRedirectFormDataProvider
      */
     protected $cmsQueryContainer;
 
-    /**
-     * @param \Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface $cmsQueryContainer
-     */
     public function __construct(CmsQueryContainerInterface $cmsQueryContainer)
     {
         $this->cmsQueryContainer = $cmsQueryContainer;
     }
 
-    /**
-     * @param int|null $idUrl
-     *
-     * @return array
-     */
     public function getData(?int $idUrl = null): array
     {
         if ($idUrl === null) {

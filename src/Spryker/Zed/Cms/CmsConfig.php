@@ -142,13 +142,6 @@ class CmsConfig extends AbstractBundleConfig
         return static::DEFAULT_CMS_PAGE_MESSAGE_BROKER_CHUNK_SIZE;
     }
 
-    /**
-     * @param string $templateRelativePath
-     * @param string $twigLayer
-     * @param string $themeName
-     *
-     * @return string
-     */
     protected function getAbsolutePath(string $templateRelativePath, string $twigLayer, string $themeName = self::THEME_NAME_DEFAULT): string
     {
         $templateRelativePath = str_replace(static::CMS_TWIG_TEMPLATE_PREFIX, '', $templateRelativePath);
@@ -213,17 +206,11 @@ class CmsConfig extends AbstractBundleConfig
         return false;
     }
 
-    /**
-     * @return string
-     */
     protected function getThemeName(): string
     {
         return $this->get(CmsConstants::YVES_THEME, '');
     }
 
-    /**
-     * @return string
-     */
     protected function getThemeNameDefault(): string
     {
         return static::THEME_NAME_DEFAULT;

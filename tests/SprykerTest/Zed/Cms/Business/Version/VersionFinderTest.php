@@ -53,9 +53,6 @@ class VersionFinderTest extends Unit
         self::TEST_VERSION_ID_3,
     ];
 
-    /**
-     * @return void
-     */
     public function testFindCmsVersionsByIdsReturnsCorrectVersions(): void
     {
         // Arrange
@@ -107,9 +104,6 @@ class VersionFinderTest extends Unit
         $this->assertSame($versionTransfer3, $result[2]);
     }
 
-    /**
-     * @return void
-     */
     public function testFindCmsVersionsByIdsWithEmptyArrayReturnsEmptyCollection(): void
     {
         // Arrange
@@ -149,9 +143,6 @@ class VersionFinderTest extends Unit
         $this->assertCount(0, $result);
     }
 
-    /**
-     * @return void
-     */
     public function testFindCmsVersionsByIdsWithNonExistentIdsReturnsEmptyCollection(): void
     {
         // Arrange
@@ -192,9 +183,6 @@ class VersionFinderTest extends Unit
         $this->assertCount(0, $result);
     }
 
-    /**
-     * @return void
-     */
     public function testFindCmsVersionsByIdsWithPartialResultsReturnsOnlyFoundVersions(): void
     {
         // Arrange
@@ -281,11 +269,6 @@ class VersionFinderTest extends Unit
         return $mock;
     }
 
-    /**
-     * @param int $idCmsVersion
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer
-     */
     protected function createCmsVersionTransfer(int $idCmsVersion): CmsVersionTransfer
     {
         return (new CmsVersionTransfer())->setIdCmsVersion($idCmsVersion);

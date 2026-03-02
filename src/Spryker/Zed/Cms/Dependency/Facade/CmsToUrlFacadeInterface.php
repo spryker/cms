@@ -44,11 +44,6 @@ interface CmsToUrlFacadeInterface
      */
     public function deactivateUrl(UrlTransfer $urlTransfer);
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return bool
-     */
     public function hasUrlCaseInsensitive(UrlTransfer $urlTransfer): bool;
 
     /**

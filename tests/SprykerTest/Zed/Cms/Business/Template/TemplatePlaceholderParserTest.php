@@ -24,9 +24,6 @@ use SprykerTest\Zed\Cms\Business\CmsMocks;
  */
 class TemplatePlaceholderParserTest extends CmsMocks
 {
-    /**
-     * @return void
-     */
     public function testGetTemplatePlaceholdersReturnsNoPlaceholders(): void
     {
         $templatePlaceholderParser = $this->createTemplatePlaceholderParser();
@@ -35,9 +32,6 @@ class TemplatePlaceholderParserTest extends CmsMocks
         $this->assertEmpty($placeholders);
     }
 
-    /**
-     * @return void
-     */
     public function testGetTemplatePlaceholdersReturnsOnePlaceholder(): void
     {
         $templatePlaceholderParser = $this->createTemplatePlaceholderParser();
@@ -46,9 +40,6 @@ class TemplatePlaceholderParserTest extends CmsMocks
         $this->assertEquals(['title'], $placeholders);
     }
 
-    /**
-     * @return void
-     */
     public function testGetTemplatePlaceholdersReturnsFewPlaceholder(): void
     {
         $templatePlaceholderParser = $this->createTemplatePlaceholderParser();
@@ -57,9 +48,6 @@ class TemplatePlaceholderParserTest extends CmsMocks
         $this->assertEquals(['title', 'content'], $placeholders);
     }
 
-    /**
-     * @return \Spryker\Zed\Cms\Business\Template\TemplatePlaceholderParserInterface
-     */
     protected function createTemplatePlaceholderParser(): TemplatePlaceholderParserInterface
     {
         $cmsConfigMock = $this->createCmsConfigMock();

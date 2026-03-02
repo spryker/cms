@@ -35,12 +35,6 @@ class VersionMigration implements VersionMigrationInterface
         $this->migrationHandlers = $migrationHandlers;
     }
 
-    /**
-     * @param string $cmsVersionOriginData
-     * @param string $cmsVersionTargetData
-     *
-     * @return void
-     */
     public function migrate(string $cmsVersionOriginData, string $cmsVersionTargetData): void
     {
         $this->getTransactionHandler()->handleTransaction(function () use ($cmsVersionOriginData, $cmsVersionTargetData) {
@@ -48,12 +42,6 @@ class VersionMigration implements VersionMigrationInterface
         });
     }
 
-    /**
-     * @param string $cmsVersionOriginData
-     * @param string $cmsVersionTargetData
-     *
-     * @return void
-     */
     protected function executeMigrateTransaction(string $cmsVersionOriginData, string $cmsVersionTargetData): void
     {
         $originDataArray = $this->utilEncoding->decodeJson($cmsVersionOriginData, true);

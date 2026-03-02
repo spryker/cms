@@ -38,9 +38,6 @@ class CmsPageEventExporterTest extends Unit
      */
     protected const TEST_CMS_PAGE_IDS = [1, 2, 3, 4, 5];
 
-    /**
-     * @return void
-     */
     public function testExportTriggersEventsForActiveCmsPages(): void
     {
         // Arrange

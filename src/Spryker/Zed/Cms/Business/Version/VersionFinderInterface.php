@@ -13,11 +13,6 @@ use Generated\Shared\Transfer\CmsVersionTransfer;
 
 interface VersionFinderInterface
 {
-    /**
-     * @param int $idCmsPage
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer|null
-     */
     public function findLatestCmsVersionByIdCmsPage(int $idCmsPage): ?CmsVersionTransfer;
 
     /**
@@ -27,19 +22,8 @@ interface VersionFinderInterface
      */
     public function findAllCmsVersionByIdCmsPage(int $idCmsPage): array;
 
-    /**
-     * @param int $idCmsPage
-     * @param int $version
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer|null
-     */
     public function findCmsVersionByIdCmsPageAndVersion(int $idCmsPage, int $version): ?CmsVersionTransfer;
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionDataTransfer
-     */
     public function getCmsVersionData(int $idCmsPage): CmsVersionDataTransfer;
 
     /**

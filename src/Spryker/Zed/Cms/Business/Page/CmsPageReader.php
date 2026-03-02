@@ -30,11 +30,6 @@ class CmsPageReader implements CmsPageReaderInterface
      */
     protected $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface $cmsQueryContainer
-     * @param \Spryker\Zed\Cms\Business\Page\CmsPageMapperInterface $cmsPageMapper
-     * @param \Spryker\Zed\Cms\Dependency\Facade\CmsToLocaleFacadeInterface $localeFacade
-     */
     public function __construct(
         CmsQueryContainerInterface $cmsQueryContainer,
         CmsPageMapperInterface $cmsPageMapper,
@@ -45,11 +40,6 @@ class CmsPageReader implements CmsPageReaderInterface
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return \Generated\Shared\Transfer\CmsPageTransfer|null
-     */
     public function findCmsPageById(int $idCmsPage): ?CmsPageTransfer
     {
         $cmsPageEntity = $this->findCmsPageEntity($idCmsPage);
@@ -63,12 +53,6 @@ class CmsPageReader implements CmsPageReaderInterface
         return $this->hydrateCmsPageWithLocalizedAttributes($cmsPageTransfer, $cmsPageEntity);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return \Generated\Shared\Transfer\CmsPageTransfer
-     */
     protected function hydrateCmsPageWithLocalizedAttributes(CmsPageTransfer $cmsPageTransfer, SpyCmsPage $cmsPageEntity): CmsPageTransfer
     {
         $availableLocales = $this->localeFacade->getAvailableLocales();
@@ -96,11 +80,6 @@ class CmsPageReader implements CmsPageReaderInterface
         return $cmsPageTransfer;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPage|null
-     */
     protected function findCmsPageEntity(int $idCmsPage): ?SpyCmsPage
     {
         $cmsPageEntity = $this->cmsQueryContainer

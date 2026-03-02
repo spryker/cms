@@ -61,15 +61,6 @@ class CmsPageSaver implements CmsPageSaverInterface
      */
     protected $cmsPageStoreRelationWriter;
 
-    /**
-     * @param \Spryker\Zed\Cms\Dependency\Facade\CmsToUrlFacadeInterface $urlFacade
-     * @param \Spryker\Zed\Cms\Dependency\Facade\CmsToTouchFacadeInterface $touchFacade
-     * @param \Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface $cmsQueryContainer
-     * @param \Spryker\Zed\Cms\Business\Page\CmsPageUrlBuilderInterface $cmsPageUrlBuilder
-     * @param \Spryker\Zed\Cms\Business\Mapping\CmsGlossarySaverInterface $cmsGlossarySaver
-     * @param \Spryker\Zed\Cms\Business\Template\TemplateManagerInterface $templateManager
-     * @param \Spryker\Zed\Cms\Business\Page\Store\CmsPageStoreRelationWriterInterface $cmsPageStoreRelationWriter
-     */
     public function __construct(
         CmsToUrlFacadeInterface $urlFacade,
         CmsToTouchFacadeInterface $touchFacade,
@@ -177,11 +168,6 @@ class CmsPageSaver implements CmsPageSaverInterface
         return $cmsPageTransfer;
     }
 
-    /**
-     * @param int|null $idTemplate
-     *
-     * @return void
-     */
     protected function checkTemplateFileExists(?int $idTemplate): void
     {
         $templateTransfer = $this->templateManager
@@ -191,12 +177,6 @@ class CmsPageSaver implements CmsPageSaverInterface
             ->checkTemplateFileExists($templateTransfer->getTemplatePath());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributesTransfer
-     * @param int $idCmsPage
-     *
-     * @return void
-     */
     protected function createPageUrl(CmsPageAttributesTransfer $cmsPageAttributesTransfer, int $idCmsPage): void
     {
         $url = $this->cmsPageUrlBuilder->buildPageUrl($cmsPageAttributesTransfer);
@@ -206,12 +186,6 @@ class CmsPageSaver implements CmsPageSaverInterface
         $this->urlFacade->createUrl($urlTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPage
-     */
     protected function mapCmsPageEntity(CmsPageTransfer $cmsPageTransfer, SpyCmsPage $cmsPageEntity): SpyCmsPage
     {
         $cmsPageEntity->fromArray($cmsPageTransfer->toArray());
@@ -219,12 +193,6 @@ class CmsPageSaver implements CmsPageSaverInterface
         return $cmsPageEntity;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributesTransfer
-     * @param \Orm\Zed\Url\Persistence\SpyUrl $urlEntity
-     *
-     * @return void
-     */
     protected function updatePageUrl(CmsPageAttributesTransfer $cmsPageAttributesTransfer, SpyUrl $urlEntity): void
     {
         $url = $this->cmsPageUrlBuilder->buildPageUrl($cmsPageAttributesTransfer);
@@ -240,11 +208,6 @@ class CmsPageSaver implements CmsPageSaverInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
-     *
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPage|null
-     */
     protected function getCmsPageEntity(CmsPageTransfer $cmsPageTransfer): ?SpyCmsPage
     {
         $cmsPageEntity = $this->cmsQueryContainer
@@ -254,11 +217,6 @@ class CmsPageSaver implements CmsPageSaverInterface
         return $cmsPageEntity;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return array
-     */
     protected function createCmsPageList(SpyCmsPage $cmsPageEntity): array
     {
         $cmsPageUrlList = [];
@@ -284,12 +242,6 @@ class CmsPageSaver implements CmsPageSaverInterface
         return $cmsPageLocalizedAttributesList;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributesTransfer
-     *
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes
-     */
     protected function mapCmsPageLocalizedAttributes(
         SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity,
         CmsPageAttributesTransfer $cmsPageAttributesTransfer
@@ -299,12 +251,6 @@ class CmsPageSaver implements CmsPageSaverInterface
         return $cmsPageLocalizedAttributesEntity;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity
-     * @param \Generated\Shared\Transfer\CmsPageMetaAttributesTransfer $cmsPageMetaAttributesTransfer
-     *
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes
-     */
     protected function mapCmsPageLocalizedMetaAttributes(
         SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity,
         CmsPageMetaAttributesTransfer $cmsPageMetaAttributesTransfer
@@ -314,12 +260,6 @@ class CmsPageSaver implements CmsPageSaverInterface
         return $cmsPageLocalizedAttributesEntity;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributesTransfer
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes
-     */
     protected function createLocalizedAttributes(CmsPageAttributesTransfer $cmsPageAttributesTransfer, SpyCmsPage $cmsPageEntity): SpyCmsPageLocalizedAttributes
     {
         $cmsPageLocalizedAttributesEntity = $this->createCmsPageLocalizedAttributesEntity();
@@ -389,12 +329,6 @@ class CmsPageSaver implements CmsPageSaverInterface
         return $cmsPageLocalizedAttributesList;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity
-     *
-     * @return void
-     */
     protected function updateMetaAttributeWithLocalizedAttributes(
         CmsPageTransfer $cmsPageTransfer,
         SpyCmsPageLocalizedAttributes $cmsPageLocalizedAttributesEntity
@@ -452,13 +386,6 @@ class CmsPageSaver implements CmsPageSaverInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributesTransfer
-     * @param int $idCmsPage
-     * @param string $url
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function createUrlTransfer(CmsPageAttributesTransfer $cmsPageAttributesTransfer, int $idCmsPage, string $url): UrlTransfer
     {
         $urlTransfer = new UrlTransfer();
@@ -469,28 +396,16 @@ class CmsPageSaver implements CmsPageSaverInterface
         return $urlTransfer;
     }
 
-    /**
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPage
-     */
     protected function createCmsPageEntity(): SpyCmsPage
     {
         return new SpyCmsPage();
     }
 
-    /**
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes
-     */
     protected function createCmsPageLocalizedAttributesEntity(): SpyCmsPageLocalizedAttributes
     {
         return new SpyCmsPageLocalizedAttributes();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
-     * @param int $idCmsPage
-     *
-     * @return void
-     */
     protected function persistStoreRelation(CmsPageTransfer $cmsPageTransfer, int $idCmsPage): void
     {
         $storeRelationTransfer = $cmsPageTransfer->getStoreRelation();

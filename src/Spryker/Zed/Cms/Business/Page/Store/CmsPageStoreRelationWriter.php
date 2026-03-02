@@ -22,21 +22,12 @@ class CmsPageStoreRelationWriter implements CmsPageStoreRelationWriterInterface
      */
     protected $cmsPageStoreRelationReader;
 
-    /**
-     * @param \Spryker\Zed\Cms\Persistence\CmsEntityManagerInterface $cmsEntityManager
-     * @param \Spryker\Zed\Cms\Business\Page\Store\CmsPageStoreRelationReaderInterface $cmsPageStoreRelationReader
-     */
     public function __construct(CmsEntityManagerInterface $cmsEntityManager, CmsPageStoreRelationReaderInterface $cmsPageStoreRelationReader)
     {
         $this->cmsEntityManager = $cmsEntityManager;
         $this->cmsPageStoreRelationReader = $cmsPageStoreRelationReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreRelationTransfer $storeRelationTransfer
-     *
-     * @return void
-     */
     public function update(StoreRelationTransfer $storeRelationTransfer): void
     {
         $storeRelationTransfer->requireIdEntity();

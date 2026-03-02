@@ -21,10 +21,6 @@ class TemplateReader implements TemplateReaderInterface
      */
     protected $templatePlaceholderParser;
 
-    /**
-     * @param \Spryker\Zed\Cms\Business\Template\TemplateContentReaderInterface $templateContentReader
-     * @param \Spryker\Zed\Cms\Business\Template\TemplatePlaceholderParserInterface $templatePlaceholderParser
-     */
     public function __construct(
         TemplateContentReaderInterface $templateContentReader,
         TemplatePlaceholderParserInterface $templatePlaceholderParser

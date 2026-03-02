@@ -37,10 +37,6 @@ class VersionDataMapper implements VersionDataMapperInterface
      */
     protected $cmsPageStoreRelationReader;
 
-    /**
-     * @param \Spryker\Zed\Cms\Dependency\Service\CmsToUtilEncodingInterface $utilEncoding
-     * @param \Spryker\Zed\Cms\Business\Page\Store\CmsPageStoreRelationReaderInterface $cmsPageStoreRelationReader
-     */
     public function __construct(
         CmsToUtilEncodingInterface $utilEncoding,
         CmsPageStoreRelationReaderInterface $cmsPageStoreRelationReader
@@ -49,21 +45,11 @@ class VersionDataMapper implements VersionDataMapperInterface
         $this->cmsPageStoreRelationReader = $cmsPageStoreRelationReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $cmsVersionDataTransfer
-     *
-     * @return string
-     */
     public function mapToJsonData(CmsVersionDataTransfer $cmsVersionDataTransfer): string
     {
         return $this->utilEncoding->encodeJson($cmsVersionDataTransfer->toArray());
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionDataTransfer
-     */
     public function mapToCmsVersionDataTransfer(SpyCmsPage $cmsPageEntity): CmsVersionDataTransfer
     {
         $cmsVersionDataTransfer = new CmsVersionDataTransfer();
@@ -81,11 +67,6 @@ class VersionDataMapper implements VersionDataMapperInterface
         return $cmsVersionDataTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsVersion $cmsVersionEntity
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer
-     */
     public function mapToCmsVersionTransfer(SpyCmsVersion $cmsVersionEntity): CmsVersionTransfer
     {
         $cmsVersionTransfer = new CmsVersionTransfer();
@@ -94,11 +75,6 @@ class VersionDataMapper implements VersionDataMapperInterface
         return $cmsVersionTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return \Generated\Shared\Transfer\CmsTemplateTransfer
-     */
     public function mapToCmsTemplateData(SpyCmsPage $cmsPageEntity): CmsTemplateTransfer
     {
         $cmsTemplateTransfer = new CmsTemplateTransfer();
@@ -107,11 +83,6 @@ class VersionDataMapper implements VersionDataMapperInterface
         return $cmsTemplateTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return \Generated\Shared\Transfer\CmsPageTransfer
-     */
     public function mapToCmsPageLocalizedAttributesData(SpyCmsPage $cmsPageEntity): CmsPageTransfer
     {
         $cmsPageTransfer = new CmsPageTransfer();
@@ -130,11 +101,6 @@ class VersionDataMapper implements VersionDataMapperInterface
         return $cmsPageTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return \Generated\Shared\Transfer\CmsGlossaryTransfer
-     */
     public function mapToCmsGlossaryKeyMappingsData(SpyCmsPage $cmsPageEntity): CmsGlossaryTransfer
     {
         $cmsGlossaryTransfer = new CmsGlossaryTransfer();
@@ -153,12 +119,6 @@ class VersionDataMapper implements VersionDataMapperInterface
         return $cmsGlossaryTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return \Generated\Shared\Transfer\CmsPageTransfer
-     */
     protected function mapToCmsPageStoreRelationData(CmsPageTransfer $cmsPageTransfer, SpyCmsPage $cmsPageEntity): CmsPageTransfer
     {
         $storeRelationTransfer = $this->cmsPageStoreRelationReader->getStoreRelation(
@@ -189,12 +149,6 @@ class VersionDataMapper implements VersionDataMapperInterface
         return $cmsGlossaryAttributeTransfers;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes $spyCmsPageLocalizedAttributes
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\CmsPageAttributesTransfer
-     */
     protected function createCmsPageAttributesTransfer(
         SpyCmsPageLocalizedAttributes $spyCmsPageLocalizedAttributes,
         string $localeName
@@ -206,12 +160,6 @@ class VersionDataMapper implements VersionDataMapperInterface
         return $pageAttributeTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes $spyCmsPageLocalizedAttributes
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\CmsPageMetaAttributesTransfer
-     */
     protected function createCmsPageMetaAttributesTransfer(
         SpyCmsPageLocalizedAttributes $spyCmsPageLocalizedAttributes,
         string $localeName

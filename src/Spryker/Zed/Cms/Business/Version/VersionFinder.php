@@ -48,11 +48,6 @@ class VersionFinder implements VersionFinderInterface
         $this->transferExpanderPlugins = $transferExpanderPlugins;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer|null
-     */
     public function findLatestCmsVersionByIdCmsPage(int $idCmsPage): ?CmsVersionTransfer
     {
         $cmsVersionEntity = $this->queryContainer->queryCmsVersionByIdPage($idCmsPage)->findOne();
@@ -77,12 +72,6 @@ class VersionFinder implements VersionFinderInterface
         return $cmsVersionTransfers;
     }
 
-    /**
-     * @param int $idCmsPage
-     * @param int $version
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer|null
-     */
     public function findCmsVersionByIdCmsPageAndVersion(int $idCmsPage, int $version): ?CmsVersionTransfer
     {
         $cmsVersionEntity = $this->queryContainer->queryCmsVersionByIdPageAndVersion($idCmsPage, $version)->findOne();
@@ -125,11 +114,6 @@ class VersionFinder implements VersionFinderInterface
         return $this->expandCmsVersionTransfer($cmsVersionTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsVersionTransfer $cmsVersionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer
-     */
     protected function expandCmsVersionTransfer(CmsVersionTransfer $cmsVersionTransfer): CmsVersionTransfer
     {
         foreach ($this->transferExpanderPlugins as $transferExpanderPlugin) {
@@ -139,11 +123,6 @@ class VersionFinder implements VersionFinderInterface
         return $cmsVersionTransfer;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionDataTransfer
-     */
     public function getCmsVersionData(int $idCmsPage): CmsVersionDataTransfer
     {
         $cmsPageEntity = $this->getCmsPage($idCmsPage);

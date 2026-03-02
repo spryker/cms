@@ -21,19 +21,11 @@ class VersionGenerator implements VersionGeneratorInterface
      */
     protected $queryContainer;
 
-    /**
-     * @param \Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface $queryContainer
-     */
     public function __construct(CmsQueryContainerInterface $queryContainer)
     {
         $this->queryContainer = $queryContainer;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return int
-     */
     public function generateNewCmsVersion(int $idCmsPage): int
     {
         $cmsVersionEntity = $this->queryContainer->queryCmsVersionByIdPage($idCmsPage)->findOne();
@@ -45,21 +37,11 @@ class VersionGenerator implements VersionGeneratorInterface
         return $cmsVersionEntity->getVersion() + 1;
     }
 
-    /**
-     * @param int $versionNumber
-     *
-     * @return string
-     */
     public function generateNewCmsVersionName(int $versionNumber): string
     {
         return sprintf('v. %d', $versionNumber);
     }
 
-    /**
-     * @param int $versionNumber
-     *
-     * @return string
-     */
     public function generateReferenceCmsVersionName(int $versionNumber): string
     {
         return sprintf('copy of v. %d', $versionNumber);

@@ -26,15 +26,6 @@ use Spryker\Zed\Cms\Persistence\CmsRepositoryInterface;
 
 class CmsPageMessageBrokerPublisher implements CmsPageMessageBrokerPublisherInterface
 {
-    /**
-     * @param \Spryker\Zed\Cms\Dependency\Facade\CmsToMessageBrokerFacadeInterface $messageBrokerFacade
-     * @param \Spryker\Zed\Cms\Business\Page\CmsPageReaderInterface $cmsPageReader
-     * @param \Spryker\Zed\Cms\Persistence\CmsRepositoryInterface $cmsRepository
-     * @param \Spryker\Zed\Cms\Business\Version\VersionFinderInterface $versionFinder
-     * @param \Spryker\Zed\Cms\Business\Extractor\DataExtractorInterface $dataExtractor
-     * @param \Spryker\Zed\Cms\Business\Page\LocaleCmsPageDataExpanderInterface $localeCmsPageDataExpander
-     * @param \Spryker\Zed\Cms\CmsConfig $cmsConfig
-     */
     public function __construct(
         protected CmsToMessageBrokerFacadeInterface $messageBrokerFacade,
         protected CmsPageReaderInterface $cmsPageReader,
@@ -46,11 +37,6 @@ class CmsPageMessageBrokerPublisher implements CmsPageMessageBrokerPublisherInte
     ) {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageMessageBrokerRequestTransfer $cmsPageMessageBrokerRequestTransfer
-     *
-     * @return void
-     */
     public function sendCmsPagesToMessageBroker(CmsPageMessageBrokerRequestTransfer $cmsPageMessageBrokerRequestTransfer): void
     {
         $cmsPageIds = $cmsPageMessageBrokerRequestTransfer->getCmsPageIds();
@@ -117,12 +103,6 @@ class CmsPageMessageBrokerPublisher implements CmsPageMessageBrokerPublisherInte
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer
-     * @param \Generated\Shared\Transfer\CmsVersionTransfer $cmsVersionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CmsPagePublishedTransfer
-     */
     protected function createCmsPagePublishedTransfer(CmsPageTransfer $cmsPageTransfer, CmsVersionTransfer $cmsVersionTransfer): CmsPagePublishedTransfer
     {
         $cmsPagePublishedTransfer = new CmsPagePublishedTransfer();
@@ -136,9 +116,6 @@ class CmsPageMessageBrokerPublisher implements CmsPageMessageBrokerPublisherInte
         return $cmsPagePublishedTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\MessageAttributesTransfer
-     */
     protected function createMessageAttributesTransfer(): MessageAttributesTransfer
     {
         $tenantIdentifier = $this->cmsConfig->getTenantIdentifier();
@@ -149,11 +126,6 @@ class CmsPageMessageBrokerPublisher implements CmsPageMessageBrokerPublisherInte
         return $messageAttributesTransfer;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return \Generated\Shared\Transfer\CmsPageUnpublishedTransfer
-     */
     protected function createCmsPageUnpublishedTransfer(int $idCmsPage): CmsPageUnpublishedTransfer
     {
         $cmsPageUnpublishedTransfer = new CmsPageUnpublishedTransfer();
@@ -163,11 +135,6 @@ class CmsPageMessageBrokerPublisher implements CmsPageMessageBrokerPublisherInte
         return $cmsPageUnpublishedTransfer;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return \Generated\Shared\Transfer\CmsPageTransfer|null
-     */
     protected function getCmsPageTransfer(int $idCmsPage): ?CmsPageTransfer
     {
         return $this->cmsPageReader->findCmsPageById($idCmsPage);
@@ -196,11 +163,6 @@ class CmsPageMessageBrokerPublisher implements CmsPageMessageBrokerPublisherInte
         return $localeCmsPageData;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return string|null
-     */
     protected function getCmsPageCreatedAt(int $idCmsPage): ?string
     {
         $firstCmsVersionTransfer = $this->versionFinder->findCmsVersionByIdCmsPageAndVersion($idCmsPage, 1);

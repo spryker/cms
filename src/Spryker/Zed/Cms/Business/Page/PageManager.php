@@ -54,13 +54,6 @@ class PageManager implements PageManagerInterface
      */
     protected $urlFacade;
 
-    /**
-     * @param \Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface $cmsQueryContainer
-     * @param \Spryker\Zed\Cms\Business\Template\TemplateManagerInterface $templateManager
-     * @param \Spryker\Zed\Cms\Dependency\Facade\CmsToGlossaryFacadeInterface $glossaryFacade
-     * @param \Spryker\Zed\Cms\Dependency\Facade\CmsToTouchFacadeInterface $touchFacade
-     * @param \Spryker\Zed\Cms\Dependency\Facade\CmsToUrlFacadeInterface $urlFacade
-     */
     public function __construct(
         CmsQueryContainerInterface $cmsQueryContainer,
         TemplateManagerInterface $templateManager,
@@ -249,12 +242,6 @@ class PageManager implements PageManagerInterface
         return $pageTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PageTransfer $pageTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer|null $localeTransfer
-     *
-     * @return void
-     */
     public function touchPageActive(PageTransfer $pageTransfer, ?LocaleTransfer $localeTransfer = null): void
     {
         $pageMappings = $this->cmsQueryContainer->queryGlossaryKeyMappingsByPageId($pageTransfer->getIdCmsPage())
@@ -301,13 +288,6 @@ class PageManager implements PageManagerInterface
         return $this->urlFacade->updateUrl($pageTransfer->getUrl());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PageTransfer $pageTransfer
-     * @param string $url
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     public function createPageUrlWithLocale(PageTransfer $pageTransfer, string $url, LocaleTransfer $localeTransfer): UrlTransfer
     {
         $this->checkPageExists($pageTransfer->getIdCmsPage());
@@ -321,11 +301,6 @@ class PageManager implements PageManagerInterface
         return $this->urlFacade->createUrl($urlTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PageTransfer $pageTransfer
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     public function savePageUrlAndTouch(PageTransfer $pageTransfer): UrlTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(function (PageTransfer $pageTransfer): UrlTransfer {
@@ -333,11 +308,6 @@ class PageManager implements PageManagerInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PageTransfer $pageTransfer
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function executeSavePageUrlAndTouchTransaction(PageTransfer $pageTransfer): UrlTransfer
     {
         if (!$this->hasPageId($pageTransfer->getIdCmsPage())) {
@@ -353,11 +323,6 @@ class PageManager implements PageManagerInterface
         return $urlTransfer;
     }
 
-    /**
-     * @param int $idPage
-     *
-     * @return bool
-     */
     protected function hasPageId(int $idPage): bool
     {
         $query = $this->cmsQueryContainer->queryPageById($idPage);
@@ -429,12 +394,6 @@ class PageManager implements PageManagerInterface
         }
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $pageEntity
-     * @param \Generated\Shared\Transfer\CmsPageLocalizedAttributesTransfer $localizedAttributesTransfer
-     *
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes
-     */
     protected function getLocalizedAttributesForPage(
         SpyCmsPage $pageEntity,
         CmsPageLocalizedAttributesTransfer $localizedAttributesTransfer

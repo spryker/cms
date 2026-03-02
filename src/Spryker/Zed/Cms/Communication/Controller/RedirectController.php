@@ -62,9 +62,6 @@ class RedirectController extends AbstractController
      */
     public const MESSAGE_ID_REDIRECT_EXTRACT_ERROR = 'ID redirect URL is not set.';
 
-    /**
-     * @return array
-     */
     public function indexAction(): array
     {
         $redirectTable = $this->getFactory()
@@ -75,9 +72,6 @@ class RedirectController extends AbstractController
         ];
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(): JsonResponse
     {
         $table = $this->getFactory()

@@ -37,23 +37,8 @@ interface GlossaryKeyMappingManagerInterface
      */
     public function savePageKeyMapping(PageKeyMappingTransfer $pageKeyMappingTransfer): PageKeyMappingTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PageKeyMappingTransfer $pageKeyMappingTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer|null $localeTransfer
-     *
-     * @return \Generated\Shared\Transfer\PageKeyMappingTransfer
-     */
     public function savePageKeyMappingAndTouch(PageKeyMappingTransfer $pageKeyMappingTransfer, ?LocaleTransfer $localeTransfer = null): PageKeyMappingTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PageTransfer $pageTransfer
-     * @param string $placeholder
-     * @param string $value
-     * @param \Generated\Shared\Transfer\LocaleTransfer|null $localeTransfer
-     * @param bool $autoGlossaryKeyIncrement
-     *
-     * @return \Generated\Shared\Transfer\PageKeyMappingTransfer
-     */
     public function addPlaceholderText(
         PageTransfer $pageTransfer,
         string $placeholder,
@@ -74,11 +59,6 @@ interface GlossaryKeyMappingManagerInterface
      */
     public function deletePageKeyMapping(PageTransfer $pageTransfer, string $placeholder): bool;
 
-    /**
-     * @param int $idPage
-     *
-     * @return bool
-     */
     public function deleteGlossaryKeysByIdPage(int $idPage): bool;
 
     /**
@@ -91,20 +71,7 @@ interface GlossaryKeyMappingManagerInterface
      */
     public function getPagePlaceholderMapping(int $idPage, string $placeholder): PageKeyMappingTransfer;
 
-    /**
-     * @param int $idPage
-     * @param string $placeholder
-     *
-     * @return bool
-     */
     public function hasPagePlaceholderMapping(int $idPage, string $placeholder): bool;
 
-    /**
-     * @param string $templateName
-     * @param string $placeholder
-     * @param bool $autoIncrement
-     *
-     * @return string
-     */
     public function generateGlossaryKeyName(string $templateName, string $placeholder, bool $autoIncrement = true): string;
 }

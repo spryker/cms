@@ -25,10 +25,6 @@ class CmsPageStoreRelationReader implements CmsPageStoreRelationReaderInterface
      */
     protected $cmsRepository;
 
-    /**
-     * @param \Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface $cmsQueryContainer
-     * @param \Spryker\Zed\Cms\Persistence\CmsRepositoryInterface $cmsRepository
-     */
     public function __construct(
         CmsQueryContainerInterface $cmsQueryContainer,
         CmsRepositoryInterface $cmsRepository
@@ -37,11 +33,6 @@ class CmsPageStoreRelationReader implements CmsPageStoreRelationReaderInterface
         $this->cmsRepository = $cmsRepository;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreRelationTransfer $storeRelationTransfer
-     *
-     * @return \Generated\Shared\Transfer\StoreRelationTransfer
-     */
     public function getStoreRelation(StoreRelationTransfer $storeRelationTransfer): StoreRelationTransfer
     {
         $storeRelationTransfer->requireIdEntity();

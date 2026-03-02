@@ -102,11 +102,6 @@ class GlossaryController extends AbstractController
         ];
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPage
-     *
-     * @return int|null
-     */
     protected function getLocaleByCmsPage(SpyCmsPage $cmsPage): ?int
     {
         $fkLocale = null;
@@ -148,11 +143,6 @@ class GlossaryController extends AbstractController
         return $this->redirectResponse($redirectUrl);
     }
 
-    /**
-     * @param string $tempFile
-     *
-     * @return array
-     */
     protected function findTemplatePlaceholders(string $tempFile): array
     {
         $placeholderMap = [];
@@ -172,11 +162,6 @@ class GlossaryController extends AbstractController
         return $placeholderMap;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function searchAction(Request $request): JsonResponse
     {
         /** @var string|null $value */
@@ -267,11 +252,6 @@ class GlossaryController extends AbstractController
             ->savePageKeyMappingAndTouch($pageKeyMappingTransfer, $localeTransfer);
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $pageUrl
-     *
-     * @return array
-     */
     protected function findPagePlaceholders(SpyCmsPage $pageUrl): array
     {
         $pageUrlArray = $pageUrl->toArray();
@@ -295,12 +275,6 @@ class GlossaryController extends AbstractController
         return $placeholders;
     }
 
-    /**
-     * @param int|null $idPage
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return array
-     */
     protected function extractGlossaryMapping(?int $idPage, LocaleTransfer $localeTransfer): array
     {
         $glossaryQuery = $this->getQueryContainer()
@@ -344,15 +318,6 @@ class GlossaryController extends AbstractController
         ]);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param array $glossaryMappingArray
-     * @param string|null $placeholder
-     * @param int|null $idPage
-     * @param int|null $fkLocale
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     protected function createPlaceholderForm(Request $request, array $glossaryMappingArray, ?string $placeholder, ?int $idPage, ?int $fkLocale): FormInterface
     {
         $idMapping = null;
@@ -417,11 +382,6 @@ class GlossaryController extends AbstractController
         return $cmsPage;
     }
 
-    /**
-     * @param \Orm\Zed\Cms\Persistence\SpyCmsPage $cmsPageEntity
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     protected function getLocaleTransfer(SpyCmsPage $cmsPageEntity): LocaleTransfer
     {
         $localeTransfer = $this->getFactory()->getLocaleFacade()->getCurrentLocale();

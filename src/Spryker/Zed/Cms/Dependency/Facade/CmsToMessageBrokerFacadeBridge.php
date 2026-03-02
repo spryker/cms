@@ -25,11 +25,6 @@ class CmsToMessageBrokerFacadeBridge implements CmsToMessageBrokerFacadeInterfac
         $this->messageBrokerFacade = $messageBrokerFacade;
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $messageTransfer
-     *
-     * @return \Generated\Shared\Transfer\MessageResponseTransfer
-     */
     public function sendMessage(TransferInterface $messageTransfer): MessageResponseTransfer
     {
         return $this->messageBrokerFacade->sendMessage($messageTransfer);

@@ -64,12 +64,6 @@ class VersionPublisher implements VersionPublisherInterface
         $this->postSavePlugins = $postSavePlugins;
     }
 
-    /**
-     * @param int $idCmsPage
-     * @param string|null $versionName
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer
-     */
     public function publishWithVersion(int $idCmsPage, ?string $versionName = null): CmsVersionTransfer
     {
         $cmsVersionDataTransfer = $this->versionFinder->getCmsVersionData($idCmsPage);
@@ -78,13 +72,6 @@ class VersionPublisher implements VersionPublisherInterface
         return $this->createCmsVersion($encodedData, $idCmsPage, $versionName);
     }
 
-    /**
-     * @param string $data
-     * @param int $idCmsPage
-     * @param string|null $versionName
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer
-     */
     protected function createCmsVersion(string $data, int $idCmsPage, ?string $versionName = null): CmsVersionTransfer
     {
         $versionNumber = $this->versionGenerator->generateNewCmsVersion($idCmsPage);
@@ -96,14 +83,6 @@ class VersionPublisher implements VersionPublisherInterface
         return $this->saveAndTouchCmsVersion($data, $idCmsPage, $versionName, $versionNumber);
     }
 
-    /**
-     * @param string $data
-     * @param int $idCmsPage
-     * @param string $versionName
-     * @param int $versionNumber
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer
-     */
     protected function saveAndTouchCmsVersion(string $data, int $idCmsPage, string $versionName, int $versionNumber): CmsVersionTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(function () use ($data, $idCmsPage, $versionName, $versionNumber) {
@@ -111,14 +90,6 @@ class VersionPublisher implements VersionPublisherInterface
         });
     }
 
-    /**
-     * @param string $data
-     * @param int $idCmsPage
-     * @param string $versionName
-     * @param int $versionNumber
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer
-     */
     protected function executeSaveAndTouchCmsVersionTransaction(string $data, int $idCmsPage, string $versionName, int $versionNumber): CmsVersionTransfer
     {
         $cmsVersionTransfer = $this->saveCmsVersion($idCmsPage, $data, $versionNumber, $versionName);
@@ -132,14 +103,6 @@ class VersionPublisher implements VersionPublisherInterface
         return $cmsVersionTransfer;
     }
 
-    /**
-     * @param int $idCmsPage
-     * @param string $data
-     * @param int $versionNumber
-     * @param string $versionName
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionTransfer
-     */
     protected function saveCmsVersion(int $idCmsPage, string $data, int $versionNumber, string $versionName): CmsVersionTransfer
     {
         $cmsVersionEntity = new SpyCmsVersion();

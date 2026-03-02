@@ -36,9 +36,6 @@ use SprykerTest\Zed\Cms\Business\CmsMocks;
  */
 class CmsPageSaverTest extends CmsMocks
 {
-    /**
-     * @return void
-     */
     public function testCreatePageShouldPersistGivenTransfer(): void
     {
         $cmsPageSaverMock = $this->createCmsPageSaverMock();
@@ -68,9 +65,6 @@ class CmsPageSaverTest extends CmsMocks
         $this->assertSame($cmsPageEntityMock->getIdCmsPage(), $idCmsPage);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdatePageShouldUpdateExistingEntityWithNewData(): void
     {
         $touchFacadeMock = $this->createTouchFacadeMock();

@@ -21,25 +21,10 @@ interface TemplateManagerInterface
      */
     public function createTemplate(string $name, string $path): CmsTemplateTransfer;
 
-    /**
-     * @param string $path
-     *
-     * @return bool
-     */
     public function hasTemplatePath(string $path): bool;
 
-    /**
-     * @param int $id
-     *
-     * @return bool
-     */
     public function hasTemplateId(int $id): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsTemplateTransfer $cmsTemplate
-     *
-     * @return \Generated\Shared\Transfer\CmsTemplateTransfer
-     */
     public function saveTemplate(CmsTemplateTransfer $cmsTemplate): CmsTemplateTransfer;
 
     /**
@@ -60,11 +45,6 @@ interface TemplateManagerInterface
      */
     public function getTemplateByPath(string $path): CmsTemplateTransfer;
 
-    /**
-     * @param string $cmsTemplateFolderPath
-     *
-     * @return bool
-     */
     public function syncTemplate(string $cmsTemplateFolderPath): bool;
 
     /**

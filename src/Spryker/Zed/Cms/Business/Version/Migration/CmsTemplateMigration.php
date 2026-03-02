@@ -26,22 +26,12 @@ class CmsTemplateMigration implements MigrationInterface
      */
     protected $queryContainer;
 
-    /**
-     * @param \Spryker\Zed\Cms\Business\Template\TemplateManagerInterface $templateManager
-     * @param \Spryker\Zed\Cms\Persistence\CmsQueryContainerInterface $queryContainer
-     */
     public function __construct(TemplateManagerInterface $templateManager, CmsQueryContainerInterface $queryContainer)
     {
         $this->templateManager = $templateManager;
         $this->queryContainer = $queryContainer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $originVersionDataTransfer
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $targetVersionDataTransfer
-     *
-     * @return void
-     */
     public function migrate(CmsVersionDataTransfer $originVersionDataTransfer, CmsVersionDataTransfer $targetVersionDataTransfer): void
     {
         $this->getTransactionHandler()->handleTransaction(function () use ($targetVersionDataTransfer) {
@@ -49,11 +39,6 @@ class CmsTemplateMigration implements MigrationInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $targetVersionDataTransfer
-     *
-     * @return void
-     */
     protected function executeMigrateTransaction(CmsVersionDataTransfer $targetVersionDataTransfer): void
     {
         $templatePath = $targetVersionDataTransfer->getCmsTemplate()->getTemplatePath();

@@ -26,65 +26,41 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
  */
 class CmsPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsTemplateQuery
-     */
     public function createCmsTemplateQuery(): SpyCmsTemplateQuery
     {
         return SpyCmsTemplateQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPageQuery
-     */
     public function createCmsPageQuery(): SpyCmsPageQuery
     {
         return SpyCmsPageQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsGlossaryKeyMappingQuery
-     */
     public function createCmsGlossaryKeyMappingQuery(): SpyCmsGlossaryKeyMappingQuery
     {
         return SpyCmsGlossaryKeyMappingQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Locale\Persistence\SpyLocaleQuery
-     */
     public function getLocalePropelQuery(): SpyLocaleQuery
     {
         return $this->getProvidedDependency(CmsDependencyProvider::PROPEL_QUERY_LOCALE);
     }
 
-    /**
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributesQuery
-     */
     public function createCmsPageLocalizedAttributesQuery(): SpyCmsPageLocalizedAttributesQuery
     {
         return SpyCmsPageLocalizedAttributesQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsVersionQuery
-     */
     public function createSpyCmsVersionQuery(): SpyCmsVersionQuery
     {
         return SpyCmsVersionQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Url\Persistence\SpyUrlQuery
-     */
     public function createUrlQuery(): SpyUrlQuery
     {
         return SpyUrlQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Cms\Persistence\SpyCmsPageStoreQuery
-     */
     public function createCmsPageStoreQuery(): SpyCmsPageStoreQuery
     {
         return SpyCmsPageStoreQuery::create();

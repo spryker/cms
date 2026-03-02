@@ -17,19 +17,11 @@ class CmsPageUrlBuilder implements CmsPageUrlBuilderInterface
      */
     protected $cmsConfig;
 
-    /**
-     * @param \Spryker\Zed\Cms\CmsConfig $cmsConfig
-     */
     public function __construct(CmsConfig $cmsConfig)
     {
         $this->cmsConfig = $cmsConfig;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributesTransfer
-     *
-     * @return string
-     */
     public function buildPageUrl(CmsPageAttributesTransfer $cmsPageAttributesTransfer): string
     {
         $cmsPageAttributesTransfer->requireUrl()
@@ -53,11 +45,6 @@ class CmsPageUrlBuilder implements CmsPageUrlBuilderInterface
         return $urlWithPrefix;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributesTransfer
-     *
-     * @return string
-     */
     public function getPageUrlPrefix(CmsPageAttributesTransfer $cmsPageAttributesTransfer): string
     {
         if (!$this->cmsConfig->appendPrefixToCmsPageUrl()) {
@@ -67,11 +54,6 @@ class CmsPageUrlBuilder implements CmsPageUrlBuilderInterface
         return '/' . $this->resolvePrefix($cmsPageAttributesTransfer) . '/';
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributesTransfer
-     *
-     * @return string
-     */
     protected function resolvePrefix(CmsPageAttributesTransfer $cmsPageAttributesTransfer): string
     {
         $cmsPageAttributesTransfer->requireLocaleName();
@@ -83,11 +65,6 @@ class CmsPageUrlBuilder implements CmsPageUrlBuilderInterface
         return strtolower($prefix);
     }
 
-    /**
-     * @param string $localeName
-     *
-     * @return string
-     */
     protected function extractLanguageCode(string $localeName): string
     {
         $localeNameParts = explode('_', $localeName);

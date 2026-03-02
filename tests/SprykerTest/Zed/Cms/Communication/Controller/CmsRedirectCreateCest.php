@@ -23,11 +23,6 @@ use SprykerTest\Zed\Cms\PageObject\CmsRedirectCreatePage;
  */
 class CmsRedirectCreateCest
 {
-    /**
-     * @param \SprykerTest\Zed\Cms\CmsCommunicationTester $i
-     *
-     * @return void
-     */
     public function breadcrumbIsVisible(CmsCommunicationTester $i): void
     {
         $i->markTestSkipped();
