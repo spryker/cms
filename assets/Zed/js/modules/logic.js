@@ -116,12 +116,10 @@ function showAutoComplete(formId, searchType) {
             $('.loading-' + formId).hide();
 
             $.each(data, function (i, item) {
-                keyList.append(
-                    $('<option>', {
-                        value: i,
-                        text: item.key,
-                    }),
-                );
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = item.key;
+                keyList.append(option);
 
                 keyContainer.css({ top: keyInput.offset().top - GLOSSARY_SELECT_MARGIN_TOP });
                 keyContainer.css({ left: keyInput.offset().left - GLOSSARY_SELECT_MARGIN_LEFT });
@@ -232,12 +230,10 @@ function showBlockAutoComplete(elementId, type) {
             $('.block-loading').hide();
 
             $.each(data, function (i, item) {
-                itemList.append(
-                    $('<option>', {
-                        value: i,
-                        text: '{0} -> {1}'.formatString(item.name, item.url),
-                    }),
-                );
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = '{0} -> {1}'.formatString(item.name, item.url);
+                itemList.append(option);
 
                 itemContainer.css({ top: elementInput.offset().top - 108 });
                 itemContainer.css({ left: elementInput.offset().left - 235 });
