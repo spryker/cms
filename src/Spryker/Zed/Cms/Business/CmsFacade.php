@@ -11,6 +11,8 @@ use Generated\Shared\Transfer\CmsGlossaryTransfer;
 use Generated\Shared\Transfer\CmsPageAttributesTransfer;
 use Generated\Shared\Transfer\CmsPageTransfer;
 use Generated\Shared\Transfer\CmsTemplateTransfer;
+use Generated\Shared\Transfer\CmsVersionCollectionTransfer;
+use Generated\Shared\Transfer\CmsVersionCriteriaTransfer;
 use Generated\Shared\Transfer\CmsVersionDataTransfer;
 use Generated\Shared\Transfer\CmsVersionTransfer;
 use Generated\Shared\Transfer\LocaleCmsPageDataTransfer;
@@ -648,6 +650,18 @@ class CmsFacade extends AbstractFacade implements CmsFacadeInterface
         return $this->getFactory()
             ->createVersionFinder()
             ->findAllCmsVersionByIdCmsPage($idCmsPage);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     */
+    public function getCmsVersionCollection(CmsVersionCriteriaTransfer $cmsVersionCriteriaTransfer): CmsVersionCollectionTransfer
+    {
+        return $this->getFactory()
+            ->createVersionFinder()
+            ->getCmsVersionCollection($cmsVersionCriteriaTransfer);
     }
 
     /**

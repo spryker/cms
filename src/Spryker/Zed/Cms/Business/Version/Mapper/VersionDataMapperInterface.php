@@ -23,6 +23,11 @@ interface VersionDataMapperInterface
 
     public function mapToCmsVersionTransfer(SpyCmsVersion $cmsVersionEntity): CmsVersionTransfer;
 
+    /**
+     * @param array<string, mixed> $cmsVersionData
+     */
+    public function mapCmsVersionDataArrayToCmsVersionTransfer(array $cmsVersionData, CmsVersionTransfer $cmsVersionTransfer): CmsVersionTransfer;
+
     public function mapToCmsTemplateData(SpyCmsPage $cmsPageEntity): CmsTemplateTransfer;
 
     public function mapToCmsPageLocalizedAttributesData(SpyCmsPage $cmsPageEntity): CmsPageTransfer;

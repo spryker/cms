@@ -107,10 +107,23 @@
         <property name="updatedAt" type="string"/>
     </transfer>
 
+    <transfer name="CmsVersionCollection" strict="true">
+        <property name="cmsVersions" type="CmsVersion[]" singular="cmsVersion"/>
+    </transfer>
+
     <transfer name="CmsVersionData">
         <property name="cmsPage" type="CmsPage"/>
         <property name="cmsTemplate" type="CmsTemplate"/>
         <property name="cmsGlossary" type="CmsGlossary"/>
+    </transfer>
+
+    <transfer name="CmsVersionCriteria" strict="true">
+        <property name="cmsVersionConditions" type="CmsVersionConditions"/>
+    </transfer>
+
+    <transfer name="CmsVersionConditions" strict="true">
+        <property name="idCmsPage" type="int"/>
+        <property name="isContentLoaded" type="bool"/>
     </transfer>
 
     <transfer name="LocaleCmsPageData">

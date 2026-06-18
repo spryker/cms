@@ -8,6 +8,8 @@
 namespace Spryker\Zed\Cms\Business\Version;
 
 use ArrayObject;
+use Generated\Shared\Transfer\CmsVersionCollectionTransfer;
+use Generated\Shared\Transfer\CmsVersionCriteriaTransfer;
 use Generated\Shared\Transfer\CmsVersionDataTransfer;
 use Generated\Shared\Transfer\CmsVersionTransfer;
 
@@ -32,4 +34,6 @@ interface VersionFinderInterface
      * @return \ArrayObject<int, \Generated\Shared\Transfer\CmsVersionTransfer>
      */
     public function findCmsVersionsByIds(array $cmsVersionIds): ArrayObject;
+
+    public function getCmsVersionCollection(CmsVersionCriteriaTransfer $cmsVersionCriteriaTransfer): CmsVersionCollectionTransfer;
 }

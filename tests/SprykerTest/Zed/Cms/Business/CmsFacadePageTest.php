@@ -11,7 +11,10 @@ use Codeception\Test\Unit;
 use Generated\Shared\Transfer\CmsPageAttributesTransfer;
 use Generated\Shared\Transfer\CmsPageMetaAttributesTransfer;
 use Generated\Shared\Transfer\CmsPageTransfer;
+use Generated\Shared\Transfer\CmsVersionConditionsTransfer;
+use Generated\Shared\Transfer\CmsVersionCriteriaTransfer;
 use Generated\Shared\Transfer\StoreRelationTransfer;
+use Spryker\Shared\Kernel\Transfer\Exception\NullValueException;
 use Spryker\Zed\Cms\Business\CmsFacade;
 use Spryker\Zed\Store\Business\StoreFacade;
 use Spryker\Zed\Store\StoreDependencyProvider;
@@ -352,6 +355,87 @@ class CmsFacadePageTest extends Unit
         $this->assertEquals($expectedCmsPageVersionMetaAttributes->getMetaDescription(), $actualCmsPageVersionMetaAttributes->getMetaDescription());
         $this->assertEquals($expectedCmsPageVersionMetaAttributes->getMetaKeywords(), $actualCmsPageVersionMetaAttributes->getMetaKeywords());
         $this->assertEquals($expectedCmsPageVersionMetaAttributes->getMetaTitle(), $actualCmsPageVersionMetaAttributes->getMetaTitle());
+    }
+
+    public function testFindCmsVersionsByCriteriaWithContentLoadedReturnsVersionsWithData(): void
+    {
+        // Arrange
+        $idCmsPage = $this->createCmsPageWithGlossaryAttributes();
+        $this->cmsFacade->publishWithVersion($idCmsPage);
+        $this->cmsFacade->publishWithVersion($idCmsPage);
+
+        $cmsVersionCriteriaTransfer = (new CmsVersionCriteriaTransfer())
+            ->setCmsVersionConditions(
+                (new CmsVersionConditionsTransfer())
+                    ->setIdCmsPage($idCmsPage)
+                    ->setIsContentLoaded(true),
+            );
+
+        // Act
+        $cmsVersionCollectionTransfer = $this->cmsFacade->getCmsVersionCollection($cmsVersionCriteriaTransfer);
+
+        // Assert
+        $versions = $cmsVersionCollectionTransfer->getCmsVersions();
+
+        $this->assertSame(2, $versions->count());
+        $this->assertSame(2, $versions[0]->getVersion());
+        $this->assertNotEmpty($versions[0]->getData());
+    }
+
+    public function testFindCmsVersionsByCriteriaWithoutContentLoadedReturnsVersionsWithoutData(): void
+    {
+        // Arrange
+        $idCmsPage = $this->createCmsPageWithGlossaryAttributes();
+        $this->cmsFacade->publishWithVersion($idCmsPage);
+        $this->cmsFacade->publishWithVersion($idCmsPage);
+
+        $cmsVersionCriteriaTransfer = (new CmsVersionCriteriaTransfer())
+            ->setCmsVersionConditions(
+                (new CmsVersionConditionsTransfer())
+                    ->setIdCmsPage($idCmsPage),
+            );
+
+        // Act
+        $cmsVersionCollectionTransfer = $this->cmsFacade->getCmsVersionCollection($cmsVersionCriteriaTransfer);
+
+        // Assert
+        $versions = $cmsVersionCollectionTransfer->getCmsVersions();
+
+        $this->assertSame(2, $versions->count());
+        $this->assertEmpty($versions[0]->getData());
+    }
+
+    public function testFindCmsVersionsByCriteriaReturnsEmptyArrayWhenPageHasNoVersions(): void
+    {
+        // Arrange
+        $fixtures = $this->createCmsPageTransferFixtures();
+        $cmsPageTransfer = $this->createCmsPageTransfer($fixtures);
+        $idCmsPage = $this->cmsFacade->createPage($cmsPageTransfer);
+
+        $cmsVersionCriteriaTransfer = (new CmsVersionCriteriaTransfer())
+            ->setCmsVersionConditions(
+                (new CmsVersionConditionsTransfer())
+                    ->setIdCmsPage($idCmsPage),
+            );
+
+        // Act
+        $cmsVersionCollectionTransfer = $this->cmsFacade->getCmsVersionCollection($cmsVersionCriteriaTransfer);
+
+        // Assert
+        $this->assertSame(0, $cmsVersionCollectionTransfer->getCmsVersions()->count());
+    }
+
+    public function testFindCmsVersionsByCriteriaThrowsExceptionWhenIdCmsPageMissing(): void
+    {
+        // Arrange
+        $cmsVersionCriteriaTransfer = (new CmsVersionCriteriaTransfer())
+            ->setCmsVersionConditions(new CmsVersionConditionsTransfer());
+
+        // Expect
+        $this->expectException(NullValueException::class);
+
+        // Act
+        $this->cmsFacade->getCmsVersionCollection($cmsVersionCriteriaTransfer);
     }
 
     protected function createCmsPageWithGlossaryAttributes(): int

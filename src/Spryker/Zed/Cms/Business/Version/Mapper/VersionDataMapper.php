@@ -69,10 +69,15 @@ class VersionDataMapper implements VersionDataMapperInterface
 
     public function mapToCmsVersionTransfer(SpyCmsVersion $cmsVersionEntity): CmsVersionTransfer
     {
-        $cmsVersionTransfer = new CmsVersionTransfer();
-        $cmsVersionTransfer->fromArray($cmsVersionEntity->toArray(), true);
+        return $this->mapCmsVersionDataArrayToCmsVersionTransfer($cmsVersionEntity->toArray(), new CmsVersionTransfer());
+    }
 
-        return $cmsVersionTransfer;
+    /**
+     * @param array<string, mixed> $cmsVersionData
+     */
+    public function mapCmsVersionDataArrayToCmsVersionTransfer(array $cmsVersionData, CmsVersionTransfer $cmsVersionTransfer): CmsVersionTransfer
+    {
+        return $cmsVersionTransfer->fromArray($cmsVersionData, true);
     }
 
     public function mapToCmsTemplateData(SpyCmsPage $cmsPageEntity): CmsTemplateTransfer
