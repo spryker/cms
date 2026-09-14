@@ -255,15 +255,15 @@ class CmsGlossaryForm extends AbstractType
             new Length(['max' => 255]),
         ];
 
-        $placeholderConstraints[] = new Callback([
-            'callback' => function ($placeholder, ExecutionContextInterface $context) {
+        $placeholderConstraints[] = new Callback(
+            callback: function ($placeholder, ExecutionContextInterface $context) {
                 $formData = $context->getRoot()->getViewData();
                 if ($this->getFacade()->hasPagePlaceholderMapping($formData[self::FIELD_FK_PAGE], $placeholder)) {
                     $context->addViolation('Placeholder has already mapped');
                 }
             },
-            'groups' => [static::GROUP_PLACEHOLDER_CHECK],
-        ]);
+            groups: [static::GROUP_PLACEHOLDER_CHECK],
+        );
 
         return $placeholderConstraints;
     }

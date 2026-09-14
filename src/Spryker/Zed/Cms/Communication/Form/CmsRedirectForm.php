@@ -129,7 +129,9 @@ class CmsRedirectForm extends AbstractType
     protected function addToUrlField(FormBuilderInterface $builder)
     {
         $constraints = $this->getMandatoryConstraints();
-        $constraints[] = new Callback(['callback' => [$this, 'validateUrlRedirectLoop']]);
+        $constraints[] = new Callback(
+            callback: [$this, 'validateUrlRedirectLoop'],
+        );
 
         $builder->add(static::FIELD_TO_URL, TextType::class, [
             'label' => 'To URL',
@@ -173,8 +175,8 @@ class CmsRedirectForm extends AbstractType
     {
         $urlConstraints = $this->getMandatoryConstraints();
 
-        $urlConstraints[] = new Callback([
-            'callback' => function ($url, ExecutionContextInterface $context) {
+        $urlConstraints[] = new Callback(
+            callback: function ($url, ExecutionContextInterface $context) {
                 $urlTransfer = new UrlTransfer();
                 $urlTransfer->setUrl($url);
 
@@ -182,8 +184,8 @@ class CmsRedirectForm extends AbstractType
                     $context->addViolation('URL is already used.');
                 }
             },
-            'groups' => [static::GROUP_UNIQUE_URL_CHECK],
-        ]);
+            groups: [static::GROUP_UNIQUE_URL_CHECK],
+        );
 
         return $urlConstraints;
     }
@@ -193,8 +195,8 @@ class CmsRedirectForm extends AbstractType
         return [
             $this->createNotBlankConstraint(),
             $this->createLengthConstraint(static::MAX_COUNT_CHARACTERS_REDIRECT_URL),
-            new Callback([
-                'callback' => function ($url, ExecutionContextInterface $context) {
+            new Callback(
+                callback: function ($url, ExecutionContextInterface $context) {
                     if ($url[0] !== '/') {
                         $context->addViolation('URL must start with a slash');
                     }
@@ -205,7 +207,7 @@ class CmsRedirectForm extends AbstractType
                         $context->addViolation("URL cannot contain backslash sign, you can use '%5C' instead");
                     }
                 },
-            ]),
+            ),
         ];
     }
 
