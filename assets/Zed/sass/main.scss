@@ -7,42 +7,51 @@
     hr {
         border: 1px dashed #eee;
     }
+
     .loading {
         display: none;
         position: absolute;
+
         img {
             display: inline;
             width: 15px;
         }
     }
+
     .translation {
         padding-top: 10px;
     }
+
     .small-padding {
         padding: 10px;
     }
+
     .alert {
         font-weight: bold;
+
         .gray {
-            color: gray;
+            color: #808080;
         }
+
         .green {
-            color: green;
+            color: #008000;
         }
+
         .red {
-            color: red;
+            color: #f00;
         }
     }
+
     .key-container {
         display: none;
         position: absolute;
         width: 400px;
         font-family: Helvetica, Arial, sans-serif;
-        font-size: 13px;
         color: #676a6c;
         overflow-x: hidden;
         font-size: 14px;
     }
+
     .key-list {
         width: 100%;
         height: 100%;

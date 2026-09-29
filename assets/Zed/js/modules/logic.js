@@ -31,7 +31,7 @@ function postForm($form, id, successCallback) {
         values[field.name] = field.value;
     });
 
-    if (!/\S/.test(values['form[glossary_key]']) && values['form[search_option]'] != 0) {
+    if (!/\S/.test(values['form[glossary_key]']) && values['form[search_option]'] !== 0) {
         id++;
         $('.error_' + id).text('The glossary key cannot be empty!');
         $('.waiting_' + id).text('');
@@ -58,12 +58,12 @@ var ajaxifySubmmit = function (formId) {
 
         postForm($(this), formId - 1, function (response) {
             $('.waiting_' + formId).text('');
-            if (response.success != 'false') {
+            if (response.success !== 'false') {
                 var form = $('.form_class_' + formId);
                 var keyInput = form.find('#cms_glossary_glossary_key');
                 var keyType = form.find('#cms_glossary_search_option');
 
-                if (keyType.val() == 0) {
+                if (Number(keyType.val()) === 0) {
                     keyInput.removeAttr('disabled');
                     keyInput.val(response.glossaryKeyName);
                     keyType.val(1);
@@ -98,9 +98,9 @@ function showAutoComplete(formId, searchType) {
 
     var ajaxUrl = 'glossary/search?{0}={1}&localeId={2}';
 
-    if (searchType == searchTypeGlossaryKey) {
+    if (searchType === searchTypeGlossaryKey) {
         ajaxUrl = ajaxUrl.formatString('key', keyInput.val(), keyFkLocale.val());
-    } else if (searchType == searchTypeFullText) {
+    } else if (searchType === searchTypeFullText) {
         ajaxUrl = ajaxUrl.formatString('value', keyInput.val(), keyFkLocale.val());
     } else {
         ajaxUrl = '';
@@ -141,7 +141,7 @@ function showAutoComplete(formId, searchType) {
 
             keyList.on('keydown', function (e) {
                 var key = e.keyCode;
-                if (key == 13 || key == 9) {
+                if (key === 13 || key === 9) {
                     keyList.blur();
                     return false;
                 }
@@ -165,24 +165,24 @@ var addKeySearchEvent = function (formId) {
     keyInput.on('input', function () {
         if ($(this).val().length > 3) {
             delay(function () {
-                if (xhr && xhr.readystate != 4) {
+                if (xhr && xhr.readystate !== 4) {
                     xhr.abort();
                 }
-                if (keyType.val() == 2 || keyType.val() == 3) {
+                if (Number(keyType.val()) === 2 || Number(keyType.val()) === 3) {
                     showAutoComplete(formId, keyType.val());
                 }
             }, 500);
         }
     });
 
-    if (keyType.val() == 0 && keyInput.val() == '') {
+    if (Number(keyType.val()) === 0 && keyInput.val() === '') {
         keyInput.attr('disabled', 'disabled');
     } else {
         keyType.val(1);
     }
 
     keyType.on('change', function () {
-        if (this.value == 0) {
+        if (Number(this.value) === 0) {
             keyInput.attr('disabled', 'disabled');
         } else {
             keyInput.removeAttr('disabled');
@@ -192,7 +192,7 @@ var addKeySearchEvent = function (formId) {
     keyInput.on('keyup', function (e) {
         var key = e.keyCode;
 
-        if (key == 40) {
+        if (key === 40) {
             keyList.first().focus();
             keyList.val(0).change();
         }
@@ -211,7 +211,7 @@ function showBlockAutoComplete(elementId, type) {
     var elementInput = $(elementId);
 
     var blockValue = $('#cms_block_value');
-    var ajaxUrl = type == 'category' ? '/cms/block/search-category?term={0}' : '/cms/block/search-product?term={0}';
+    var ajaxUrl = type === 'category' ? '/cms/block/search-category?term={0}' : '/cms/block/search-product?term={0}';
 
     itemList.find('option').remove();
 
@@ -245,7 +245,7 @@ function showBlockAutoComplete(elementId, type) {
 
             itemList.on('keydown', function (e) {
                 var key = e.keyCode;
-                if (key == 13 || key == 9) {
+                if (key === 13 || key === 9) {
                     itemList.blur();
                     return false;
                 }
@@ -271,10 +271,10 @@ var addAutoCompleteSearchEvent = function (elementId) {
     elementInput.on('input', function () {
         if ($(this).val().length > 3) {
             delay(function () {
-                if (xhr && xhr.readystate != 4) {
+                if (xhr && xhr.readystate !== 4) {
                     xhr.abort();
                 }
-                if (elementType.val() != 0) {
+                if (Number(elementType.val()) !== 0) {
                     showBlockAutoComplete(elementId, elementType.val());
                 }
             }, 500);
@@ -284,19 +284,19 @@ var addAutoCompleteSearchEvent = function (elementId) {
     elementInput.on('keyup', function (e) {
         var key = e.keyCode;
 
-        if (key == 40) {
+        if (key === 40) {
             itemList.first().focus();
             itemList.val(0).change();
         }
     });
 
-    if (elementType.val() == 'static') {
+    if (elementType.val() === 'static') {
         $('#cms_block_selectValue').attr('disabled', 'disabled');
         $('#cms_block_value').val(0);
     }
 
     elementType.on('change', function () {
-        if (this.value == 'static') {
+        if (this.value === 'static') {
             $('#cms_block_selectValue').attr('disabled', 'disabled');
             $('#cms_block_value').attr('value', 0);
         } else {
@@ -336,9 +336,9 @@ $(document).ready(function () {
         $(document).ajaxStop(function () {
             $('.save-all-loading').hide();
             $('.save-all-message').text(successResponseCount + ' of ' + formCount + ' is done.');
-            if (formCount == successResponseCount) {
+            if (formCount === successResponseCount) {
                 $('.save-all-message').css('color', 'green');
-            } else if (formCount > successResponseCount && successResponseCount != 0) {
+            } else if (formCount > successResponseCount && successResponseCount !== 0) {
                 $('.save-all-message').css('color', 'orange');
             } else {
                 $('.save-all-message').css('color', 'red');
